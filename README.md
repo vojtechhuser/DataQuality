@@ -12,7 +12,7 @@ There are three usage scenarios.
 2. Participate on DataQuality study (with later step for sharing of the limited data about your dataset)
 3. Run local report on Data Quality (not shared with anybody)
 4. Run development version of Data Quality (DQ) checks
-
+5. Participate on annual 'State of the Network' report and address
 
 
 # 1.Generate MIAD (minumum information about a dataset)
@@ -199,3 +199,7 @@ cT #view the output
 ```
 
 Example output is [here](inst/csv/ThemisMeasurementsUnitsCheck.csv)
+
+# 5. Participate on annual 'State of the Network' report and address
+
+In order to be listed, email to the report coortinator (VH) your MIAD level 2 CSV file.
