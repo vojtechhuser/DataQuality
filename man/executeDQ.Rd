@@ -9,6 +9,19 @@ executeDQ(connectionDetails, cdmDatabaseSchema,
   oracleTempSchema = resultsDatabaseSchema, cdmVersion = 5,
   workFolder = "output")
 }
+\arguments{
+\item{connectionDetails}{connection}
+
+\item{cdmDatabaseSchema}{schema}
+
+\item{resultsDatabaseSchema}{result schema}
+
+\item{oracleTempSchema}{oracle specific}
+
+\item{cdmVersion}{version}
+
+\item{workFolder}{where to work}
+}
 \description{
 Execute all components of the DataQuality study (resultsDatabaseSchema is where Achilles results are)
 }

@@ -18,6 +18,8 @@ schema name, for example 'cdm_data.dbo'.}
 
 \item{workFolder}{Name of local folder to place results; make sure to use forward slashes subfolder export will be created there
 (/)}
+
+\item{dbName}{name for your database}
 }
 \description{
 Package the results for sharing with OHDSI researchers

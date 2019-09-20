@@ -1,5 +1,11 @@
 #' check ThemisMeasurements Unit data
 #' obtains analysisId 1807 and compares to reference data. Output is in export folder and as data.frame
+#' 
+#' @param connectionDetails connection
+#' @param cdmDatabaseSchema schema
+#' @param resultsDatabaseSchema result schema
+#' @param outputFolder where to upload data
+#' 
 #' @export
 checkThemis <- function(connectionDetails,
                         cdmDatabaseSchema,

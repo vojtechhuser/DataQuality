@@ -1,4 +1,12 @@
 #' Execute all components of the DataQuality study (resultsDatabaseSchema is where Achilles results are)
+#' @param connectionDetails connection
+#' @param cdmDatabaseSchema schema
+#' @param resultsDatabaseSchema result schema
+#' @param oracleTempSchema oracle specific
+#' @param cdmVersion version
+#' @param workFolder where to work
+
+
 #' @export
 executeDQ <- function(connectionDetails,
                     cdmDatabaseSchema,
@@ -45,6 +53,13 @@ executeDQ <- function(connectionDetails,
 
 
 #' experimental funtion with graphic output
+#' @param connectionDetails connection
+#' @param cdmDatabaseSchema schema
+#' @param resultsDatabaseSchema result schema
+#' @param oracleTempSchema oracle specific
+#' @param cdmVersion version
+#' @param workFolder where to work
+
 #' @export
 doTree <- function(connectionDetails,
                    cdmDatabaseSchema,
@@ -104,7 +119,14 @@ doTree <- function(connectionDetails,
 
 
 #' selected Achilles Measures
-#' @export
+
+#' @param connectionDetails connection
+#' @param cdmDatabaseSchema schema
+#' @param resultsDatabaseSchema result schema
+#' @param oracleTempSchema oracle specific
+#' @param cdmVersion version
+#' @param workFolder where to work
+
 doSelectiveExport <- function(connectionDetails,
                    cdmDatabaseSchema,
                    resultsDatabaseSchema = cdmDatabaseSchema,

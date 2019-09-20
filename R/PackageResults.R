@@ -13,6 +13,7 @@
 #'                            schema name, for example 'cdm_data.dbo'.
 #' @param workFolder        Name of local folder to place results; make sure to use forward slashes subfolder export will be created there
 #'                            (/)
+#' @param dbName  name for your database
 #'
 #' @export
 packageResults <- function(connectionDetails, cdmDatabaseSchema, workFolder, dbName=cdmDatabaseSchema) {

@@ -3,7 +3,6 @@
 export("%>%")
 export(checkThemis)
 export(createMIAD)
-export(doSelectiveExport)
 export(doTree)
 export(executeDQ)
 export(packageResults)

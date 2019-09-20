@@ -9,6 +9,8 @@ submitResults(exportFolder, dbName, studyBucketName, key, secret)
 \arguments{
 \item{exportFolder}{The path to the folder containing the \code{StudyResults.zip} file.}
 
+\item{dbName}{name for your database as you want it displayed in final presentation}
+
 \item{studyBucketName}{Name of the bucket to use (provided by the study coordinator)}
 
 \item{key}{The key string as provided by the study coordinator}

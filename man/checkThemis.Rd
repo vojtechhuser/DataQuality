@@ -8,6 +8,15 @@ obtains analysisId 1807 and compares to reference data. Output is in export fold
 checkThemis(connectionDetails, cdmDatabaseSchema,
   resultsDatabaseSchema = cdmDatabaseSchema, outputFolder)
 }
+\arguments{
+\item{connectionDetails}{connection}
+
+\item{cdmDatabaseSchema}{schema}
+
+\item{resultsDatabaseSchema}{result schema}
+
+\item{outputFolder}{where to upload data}
+}
 \description{
 check ThemisMeasurements Unit data
 obtains analysisId 1807 and compares to reference data. Output is in export folder and as data.frame

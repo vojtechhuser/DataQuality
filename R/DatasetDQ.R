@@ -1,5 +1,10 @@
 #' Level one data about dataset MIAD stands for minimum information about a dataset
 #' percentage measures are used that hide exact patient counts
+#' @param connectionDetails connection
+#' @param cdmDatabaseSchema schema
+#' @param workDatabaseSchema work schema
+#' @param outputFolder where to put output
+#' @param level 1 2 or 3, indicates level of detail
 #' @export
 createMIAD <- function(connectionDetails,
                        cdmDatabaseSchema,

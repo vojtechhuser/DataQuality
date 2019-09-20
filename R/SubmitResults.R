@@ -7,6 +7,7 @@
 #' This requires an active internet connection.
 #'
 #' @param exportFolder   The path to the folder containing the \code{StudyResults.zip} file.
+#' @param dbName name for your database as you want it displayed in final presentation
 #' @param studyBucketName  Name of the bucket to use (provided by the study coordinator)
 #' @param key            The key string as provided by the study coordinator
 #' @param secret         The secret string as provided by the study coordinator
