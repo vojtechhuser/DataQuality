@@ -17,6 +17,14 @@ There are several  usage scenarios.
 6. Support development of Data Quality Dashboard
 
 
+# Package updates
+
+## v4 (2019-12-13)
+- adding support for DQD (initial part)
+
+## v3
+- adding MIAD
+
 # 1.Generate MIAD (minumum information about a dataset)
 
 A discussion about this function is in this [forum thread](http://forums.ohdsi.org/t/ohdsi-study-comparative-effectiveness-of-alendronate-and-raloxifene-in-reducing-the-risk-of-hip-fracture/2533/13?u=vojtech_huser). 
