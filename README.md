@@ -14,7 +14,7 @@ There are several  usage scenarios.
 3. Run local report on Data Quality (not shared with anybody)
 4. Run development version of Data Quality (DQ) checks
 5. Participate on annual 'State of the Network' report and address
-6. 
+6. Support development of Data Quality Dashboard
 
 
 # 1.Generate MIAD (minumum information about a dataset)
@@ -205,3 +205,8 @@ Example output is [here](inst/csv/ThemisMeasurementsUnitsCheck.csv)
 # 5. Participate on annual 'State of the Network' report and address
 
 In order to be listed, email to the report coortinator (VH) your MIAD level 2 CSV file.
+
+
+# 6. Data Quality Dashboard
+
+Package has functions that support addition of more rules and knowledge base items to the Data Quality Dashboard. For example, we want to compute 3rd and 97th percentile for some lab results to use those as thresholds.
