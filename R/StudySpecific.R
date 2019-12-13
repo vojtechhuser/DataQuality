@@ -92,8 +92,8 @@ doTree <- function(connectionDetails,
   from @results_database_schema.achilles_results
   where analysis_id in (3)
   "
-  sql <- SqlRender::renderSql(sql,results_database_schema = resultsDatabaseSchema)$sql
-  sql <- SqlRender::translateSql(sql, targetDialect = connectionDetails$dbms)$sql
+  sql <- SqlRender::render(sql,results_database_schema = resultsDatabaseSchema)
+  sql <- SqlRender::translate(sql, targetDialect = connectionDetails$dbms)
   data <- DatabaseConnector::querySql(conn, sql)
   
   
@@ -107,6 +107,7 @@ doTree <- function(connectionDetails,
   ggplot2::ggsave(file.path(exportFolder, "DemogrPyramidFigure.png"), width = 9, height = 9, dpi= 200)
   
   write.csv(data,file = file.path(exportFolder,'DemogrPyramidData.csv'),row.names = F)
+  
   
   # Clean up
   DatabaseConnector::disconnect(conn)
@@ -157,8 +158,8 @@ doSelectiveExport <- function(connectionDetails,
   # select * from @results_database_schema.achilles_results_derived r where measure_id in ('ach_2000:Percentage',
   #                                      'ach_2001:Percentage','ach_2002:Percentage','ach_2003:Percentage')
   
-  sql <- SqlRender::renderSql(sql,results_database_schema = resultsDatabaseSchema)$sql
-  sql <- SqlRender::translateSql(sql, targetDialect = connectionDetails$dbms)$sql
+  sql <- SqlRender::render(sql,results_database_schema = resultsDatabaseSchema)
+  sql <- SqlRender::translate(sql, targetDialect = connectionDetails$dbms)
   dataDerived <- DatabaseConnector::querySql(conn, sql)
   
   
@@ -187,8 +188,8 @@ doSelectiveExport <- function(connectionDetails,
   in (103,104,105,106,107,203,206,211,403,506,511,512,513,514,515,603,703,803,903,1003,1803) order by analysis_id"
   
   
-  sql <- SqlRender::renderSql(sql,results_database_schema = resultsDatabaseSchema)$sql
-  sql <- SqlRender::translateSql(sql, targetDialect = connectionDetails$dbms)$sql
+  sql <- SqlRender::render(sql,results_database_schema = resultsDatabaseSchema)
+  sql <- SqlRender::translate(sql, targetDialect = connectionDetails$dbms)
   dataDist <- DatabaseConnector::querySql(conn, sql)
   
   
@@ -207,8 +208,8 @@ doSelectiveExport <- function(connectionDetails,
   sql <- "select * from  @results_database_schema.achilles_heel_results a"
   
   
-  sql <- SqlRender::renderSql(sql,results_database_schema = resultsDatabaseSchema)$sql
-  sql <- SqlRender::translateSql(sql, targetDialect = connectionDetails$dbms)$sql
+  sql <- SqlRender::render(sql,results_database_schema = resultsDatabaseSchema)
+  sql <- SqlRender::translate(sql, targetDialect = connectionDetails$dbms)
   dataHeel <- DatabaseConnector::querySql(conn, sql)
   
   
@@ -240,8 +241,8 @@ doSelectiveExport <- function(connectionDetails,
     "
   
   
-  sql <- SqlRender::renderSql(sql,results_database_schema = resultsDatabaseSchema)$sql
-  sql <- SqlRender::translateSql(sql, targetDialect = connectionDetails$dbms)$sql
+  sql <- SqlRender::render(sql,results_database_schema = resultsDatabaseSchema)
+  sql <- SqlRender::translate(sql, targetDialect = connectionDetails$dbms)
   data <- DatabaseConnector::querySql(conn, sql)
   
   # ok so I will use upper case all the time  names(data) <- tolower(names(data))
@@ -297,8 +298,8 @@ doSelectiveExport <- function(connectionDetails,
   sql <- "select analysis_id,stratum_1,count_value from @results_database_schema.achilles_results a where analysis_id in (201)"
   
   
-  sql <- SqlRender::renderSql(sql,results_database_schema = resultsDatabaseSchema)$sql
-  sql <- SqlRender::translateSql(sql, targetDialect = connectionDetails$dbms)$sql
+  sql <- SqlRender::render(sql,results_database_schema = resultsDatabaseSchema)
+  sql <- SqlRender::translate(sql, targetDialect = connectionDetails$dbms)
   data <- DatabaseConnector::querySql(conn, sql)
   
   # ok so I will use upper case all the time  names(data) <- tolower(names(data))
@@ -403,3 +404,102 @@ doSelectiveExport <- function(connectionDetails,
 #                   oracleTempSchema = NULL,
 #                   outputFolder = "c:/temp/study_results")
 
+
+
+
+
+#' Execute all components of the DataQuality study (resultsDatabaseSchema is where Achilles results are)
+#' @param connectionDetails connection
+#' @param connectionDetails2 more study parameters
+
+#' @export
+dashboardLabThresholds <- function(connectionDetails,
+                      connectionDetails2
+                      ){
+  
+  
+  #create export folder
+  #create export subfolder in workFolder
+  exportFolder <- file.path(connectionDetails2$workFolder, "export")
+  if (!file.exists(exportFolder))
+    dir.create(exportFolder)
+  
+  
+  #add readme file
+  file.copy(system.file("dqd/readme.txt",package="DataQuality"), exportFolder)
+  #multiple steps here exporting to export folder
+  writeLines("----Running some Achilles Measures")
+  Achilles::achilles(connectionDetails = connectionDetails
+                     ,cdmDatabaseSchema = connectionDetails2$cdmDatabaseSchema
+                     ,resultsDatabaseSchema = connectionDetails2$resultsDatabaseSchema
+                     ,analysisIds = c(1807)
+                     ,runHeel = FALSE
+                     ,createIndices = FALSE
+                     ,verboseMode = FALSE)
+  units<-Achilles::fetchAchillesAnalysisResults(connectionDetails = connectionDetails,resultsDatabaseSchema = connectionDetails2$resultsDatabaseSchema
+                                         ,analysisId = 1807)
+  
+  units2<-units$analysisResults
+  names(units2) <- tolower(names(units2))
+  #names(units2)
+  #take those that have both defined
+  #str(units2)
+  units2$measurement_concept_id <-as.integer(units2$measurement_concept_id)
+  units2$unit_concept_id <-as.integer(units2$unit_concept_id)
+  #units, must have few numbers and non zero units
+  
+  selected<-units2 %>% dplyr::filter( count_value>100 & unit_concept_id !=0 )
+  writeLines(paste("-----count of suitable measurements for analysis:",nrow(selected)))
+  
+  # doTree(connectionDetails,
+  #        connectionDetails2$cdmDatabaseSchema,
+  #        resultsDatabaseSchema = resultsDatabaseSchema,
+  #        oracleTempSchema = resultsDatabaseSchema,
+  #        cdmVersion = cdmVersion,
+  #        workFolder = workFolder)
+  # 
+  # doSelectiveExport(connectionDetails,
+  #                   cdmDatabaseSchema,
+  #                   resultsDatabaseSchema = resultsDatabaseSchema,
+  #                   oracleTempSchema = resultsDatabaseSchema,
+  #                   cdmVersion = cdmVersion,
+  #                   workFolder = workFolder)
+  # 
+  #export of data
+  #done separately for now, may be included later
+  writeLines(paste("--writing some output to export folder:",exportFolder))
+  write.csv(selected,file = file.path(exportFolder,'SuitableMeasurementsAndUnits.csv'),row.names = F)
+  
+  #final cleanup
+  writeLines("--Done with dashboardLabThreshold")
+  
+  
+}
+
+#' more details
+#' @param cdmDatabaseSchema schema
+#' @param resultsDatabaseSchema result schema
+#' @param oracleTempSchema oracle specific
+#' @param cdmVersion version
+#' @param cohortTable cohort table name
+#' @param workFolder where to work
+
+#' @export
+.createConnectionDetails2<-function (cdmDatabaseSchema,resultsDatabaseSchema=NULL
+                                     ,oracleTempSchema=NULL
+                                     ,cdmVersion=NULL
+                                     ,cohortTable='cohort'
+                                     ,workFolder='c:/temp') {
+  result <- list()
+  for (name in names(formals(.createConnectionDetails2))) {
+    result[[name]] <- get(name)
+  }
+  values <- lapply(as.list(match.call())[-1], function(x) eval(x, 
+                                                               envir = sys.frame(-3)))
+  for (name in names(values)) {
+    if (name %in% names(result)) 
+      result[[name]] <- values[[name]]
+  }
+  class(result) <- "connectionDetails2"
+  return(result)
+}

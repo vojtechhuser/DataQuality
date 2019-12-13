@@ -3,6 +3,8 @@ library(devtools)
 use_package('magrittr')
 use_package('Achilles')
 use_package('OhdsiSharing')
+use_package('dplyr')
+
 
 
 

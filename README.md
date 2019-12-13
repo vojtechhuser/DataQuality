@@ -1,18 +1,20 @@
 # Data quality
 
-This is an R package that has sume utilities and also supports an informatics study that focuses on data quality (rather than a clinical question).
+This is an R package that has sume utilities and also supports an informatics study that focuses on data quality (rather than a clinical question). It may also support development of other tools.
+
 For the study, the protocol is available in extras folder.
 
 Forum link: http://forums.ohdsi.org/t/ohdsi-informatics-study-data-quality/1857/2
 
 The package was extended to also provide additional function.
-There are three usage scenarios.
+There are several  usage scenarios.
 
 1. Generate MIAD (minumum information about dataset) as .csv file that can be added to an OHDSI study
 2. Participate on DataQuality study (with later step for sharing of the limited data about your dataset)
 3. Run local report on Data Quality (not shared with anybody)
 4. Run development version of Data Quality (DQ) checks
 5. Participate on annual 'State of the Network' report and address
+6. 
 
 
 # 1.Generate MIAD (minumum information about a dataset)
