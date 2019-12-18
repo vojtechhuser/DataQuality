@@ -58,3 +58,26 @@ DataQuality::dashboardLabThresholds(connectionDetails = connectionDetails
                                     ,connectionDetails2 = connectionDetails2)
 
 #results will be in workfolder, subfolder export (will be zipped once we have more output)
+
+
+#testing on other database
+#load your environment 
+cdmDatabaseSchema='gpc'
+#cdmDatabaseSchema='onek'
+vocabularyDatabaseSchema='vocab'
+resultsDatabaseSchema=resultDatabaseSchema=cohortDatabaseSchema='gpc_results'
+#resultDatabaseSchema=cohortDatabaseSchema='onek_results'
+
+#cohortTable='deletecohort'
+cohortTable='cohort'
+
+
+source('MoreOhdsiRTools.R')
+library(DatabaseConnector)
+
+connectionDetails<-createConnectionDetails(dbms='postgresql',user=user,password=pw,server=server
+                                           ,schema = cdmDatabaseSchema)
+#DatabaseConnector::disconnect(connection)
+connection <-connect(connectionDetails)
+
+(tables<-getTableNames(connection,cdmDatabaseSchema))

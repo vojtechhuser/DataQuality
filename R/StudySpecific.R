@@ -432,6 +432,7 @@ dashboardLabThresholds <- function(connectionDetails,
   Achilles::achilles(connectionDetails = connectionDetails
                      ,cdmDatabaseSchema = connectionDetails2$cdmDatabaseSchema
                      ,resultsDatabaseSchema = connectionDetails2$resultsDatabaseSchema
+                     ,cdmVersion = connectionDetails2$cdmVersion
                      ,analysisIds = c(1807)
                      ,runHeel = FALSE
                      ,createIndices = FALSE
@@ -487,7 +488,7 @@ dashboardLabThresholds <- function(connectionDetails,
 #' @export
 .createConnectionDetails2<-function (cdmDatabaseSchema,resultsDatabaseSchema=NULL
                                      ,oracleTempSchema=NULL
-                                     ,cdmVersion=NULL
+                                     ,cdmVersion="5"
                                      ,cohortTable='cohort'
                                      ,workFolder='c:/temp') {
   result <- list()
