@@ -19,8 +19,8 @@ executeDQ(connectionDetails = connectionDetails,cdmDatabaseSchema = cdmDatabaseS
 cd2<-.createConnectionDetails2(cdmDatabaseSchema = cdmDatabaseSchema)
 
 
-DatabaseConnector::createConnectionDetails()
-packageResults(connectionDetails,cdmDatabaseSchema,workFolder)
+#DatabaseConnector::createConnectionDetails()
+#packageResults(connectionDetails,cdmDatabaseSchema,workFolder)
 
 submitResults(exportFolder =file.path(workFolder,'export'),
               studyBucketName = 'ohdsi-study-dataquality',
@@ -54,8 +54,7 @@ connectionDetails2<-DataQuality:::.createConnectionDetails2(cdmDatabaseSchema = 
 
 #execute the core of the DQD helper analysis, outptu will be writen as CSV file into an export folder
 
-DataQuality::dashboardLabThresholds(connectionDetails = connectionDetails
-                                    ,connectionDetails2 = connectionDetails2)
+DataQuality::dashboardLabThresholds(connectionDetails = connectionDetails,connectionDetails2 = connectionDetails2)
 
 #results will be in workfolder, subfolder export (will be zipped once we have more output)
 
@@ -80,4 +79,5 @@ connectionDetails<-createConnectionDetails(dbms='postgresql',user=user,password=
 #DatabaseConnector::disconnect(connection)
 connection <-connect(connectionDetails)
 
-(tables<-getTableNames(connection,cdmDatabaseSchema))
+#(tables<-getTableNames(connection,cdmDatabaseSchema))
+dashboardLabThresholds(connectionDetails = connectionDetails,connectionDetails2 = connectionDetails2)

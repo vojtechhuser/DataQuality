@@ -405,8 +405,18 @@ doSelectiveExport <- function(connectionDetails,
 #                   outputFolder = "c:/temp/study_results")
 
 
+#simpler function not translating the strata into names
 
-
+.fetchAchillesAnalysisDistResults<-function(connectionDetails, resultsDatabaseSchema, AnalysesAsSqlInCode){ 
+  connection <- DatabaseConnector::connect(connectionDetails = connectionDetails)
+  on.exit(DatabaseConnector::disconnect(connection = connection))
+  sql <- "select * from @resultsDatabaseSchema.achilles_results_dist where analysis_id in ( @analysisId );"
+  sql <- SqlRender::render(sql = sql, resultsDatabaseSchema = resultsDatabaseSchema,analysisId = AnalysesAsSqlInCode)
+  sql <- SqlRender::translate(sql = sql, targetDialect = connectionDetails$dbms)
+  cat(sql)
+  analysisResults <- DatabaseConnector::querySql(connection = connection,sql = sql)
+  return(analysisResults) 
+}
 
 #' Execute all components of the DataQuality study (resultsDatabaseSchema is where Achilles results are)
 #' @param connectionDetails connection
@@ -433,10 +443,10 @@ dashboardLabThresholds <- function(connectionDetails,
                      ,cdmDatabaseSchema = connectionDetails2$cdmDatabaseSchema
                      ,resultsDatabaseSchema = connectionDetails2$resultsDatabaseSchema
                      ,cdmVersion = connectionDetails2$cdmVersion
-                     ,analysisIds = c(1807)
+                     ,analysisIds = c(1807,1815) #,1816,1817)
                      ,runHeel = FALSE
                      ,createIndices = FALSE
-                     ,verboseMode = FALSE)
+                     ,verboseMode = TRUE)
   units<-Achilles::fetchAchillesAnalysisResults(connectionDetails = connectionDetails,resultsDatabaseSchema = connectionDetails2$resultsDatabaseSchema
                                          ,analysisId = 1807)
   
@@ -448,6 +458,15 @@ dashboardLabThresholds <- function(connectionDetails,
   units2$measurement_concept_id <-as.integer(units2$measurement_concept_id)
   units2$unit_concept_id <-as.integer(units2$unit_concept_id)
   #units, must have few numbers and non zero units
+  
+  
+  #more numbers
+  a<-.fetchAchillesAnalysisDistResults(connectionDetails = connectionDetails,resultsDatabaseSchema = connectionDetails2$resultsDatabaseSchema
+                              #                  ,AnalysesAsSqlInCode = "1815,1816,1817")
+  ,AnalysesAsSqlInCode = "1815")
+  
+  
+  
   
   selected<-units2 %>% dplyr::filter( count_value>100 & unit_concept_id !=0 )
   writeLines(paste("-----count of suitable measurements for analysis:",nrow(selected)))
@@ -470,6 +489,7 @@ dashboardLabThresholds <- function(connectionDetails,
   #done separately for now, may be included later
   writeLines(paste("--writing some output to export folder:",exportFolder))
   write.csv(selected,file = file.path(exportFolder,'SuitableMeasurementsAndUnits.csv'),row.names = F)
+  write.csv(a,file = file.path(exportFolder,'ThresholdsA.csv'),row.names = F)
   
   #final cleanup
   writeLines("--Done with dashboardLabThreshold")
@@ -477,7 +497,7 @@ dashboardLabThresholds <- function(connectionDetails,
   
 }
 
-#' more details
+#' helper object with more connection details
 #' @param cdmDatabaseSchema schema
 #' @param resultsDatabaseSchema result schema
 #' @param oracleTempSchema oracle specific
