@@ -418,13 +418,101 @@ doSelectiveExport <- function(connectionDetails,
   return(analysisResults) 
 }
 
+#' do a custom measure
+#' @param connectionDetails connection
+#' @param connectionDetails2 more study parameters
+
+#' @export
+customMeasure <- function(connectionDetails,
+                                   connectionDetails2){
+  sql='
+  with statsView_1815 as
+  (
+  select subject_id as stratum1_id, unit_concept_id as stratum2_id, count_value, count_big(*) as total, row_number() over (partition by subject_id, unit_concept_id order by count_value) as rn
+  FROM 
+  (
+    select measurement_concept_id as subject_id, 
+  	unit_concept_id,
+  	CAST(value_as_number AS FLOAT) as count_value
+    from @cdmDatabaseSchema.MEASUREMENT m
+    where m.unit_concept_id is not null
+  	and m.value_as_number is not null
+  ) A
+  group by subject_id, unit_concept_id, count_value
+)
+--HINT DISTRIBUTE_ON_KEY(stratum1_id)
+select 1890 as analysis_id,
+  CAST(o.stratum1_id AS VARCHAR(255)) AS stratum1_id,
+  CAST(o.stratum2_id AS VARCHAR(255)) AS stratum2_id,
+  o.total as count_value,
+  o.min_value,
+	o.max_value,
+	o.avg_value,
+	o.stdev_value,
+	MIN(case when p.accumulated >= .50 * o.total then count_value else o.max_value end) as median_value,
+	MIN(case when p.accumulated >= .01 * o.total then count_value else o.max_value end) as p01_value,
+	MIN(case when p.accumulated >= .02 * o.total then count_value else o.max_value end) as p02_value,
+	MIN(case when p.accumulated >= .03 * o.total then count_value else o.max_value end) as p03_value,
+	MIN(case when p.accumulated >= .05 * o.total then count_value else o.max_value end) as p05_value,
+	MIN(case when p.accumulated >= .10 * o.total then count_value else o.max_value end) as p10_value,
+	MIN(case when p.accumulated >= .25 * o.total then count_value else o.max_value end) as p25_value,
+	MIN(case when p.accumulated >= .75 * o.total then count_value else o.max_value end) as p75_value,
+	MIN(case when p.accumulated >= .95 * o.total then count_value else o.max_value end) as p95_value,
+	MIN(case when p.accumulated >= .97 * o.total then count_value else o.max_value end) as p97_value,
+	MIN(case when p.accumulated >= .98 * o.total then count_value else o.max_value end) as p98_value,
+	MIN(case when p.accumulated >= .99 * o.total then count_value else o.max_value end) as p99_value
+from 
+(
+  select s.stratum1_id, s.stratum2_id, s.count_value, s.total, sum(p.total) as accumulated
+  from statsView_1815 s
+  join statsView_1815 p on s.stratum1_id = p.stratum1_id and s.stratum2_id = p.stratum2_id and p.rn <= s.rn
+  group by s.stratum1_id, s.stratum2_id, s.count_value, s.total, s.rn
+) p
+join 
+(
+	select subject_id as stratum1_id,
+	  unit_concept_id as stratum2_id,
+	  CAST(avg(1.0 * count_value) AS FLOAT) as avg_value,
+	  CAST(stdev(count_value) AS FLOAT) as stdev_value,
+	  min(count_value) as min_value,
+	  max(count_value) as max_value,
+	  count_big(*) as total
+	FROM 
+	(
+	  select measurement_concept_id as subject_id, 
+		unit_concept_id,
+		CAST(value_as_number AS FLOAT) as count_value
+	  from @cdmDatabaseSchema.MEASUREMENT m
+	  where m.unit_concept_id is not null
+		and m.value_as_number is not null
+	) A
+	group by subject_id, unit_concept_id
+) o on p.stratum1_id = o.stratum1_id and p.stratum2_id = o.stratum2_id 
+GROUP BY o.stratum1_id, o.stratum2_id, o.total, o.min_value, o.max_value, o.avg_value, o.stdev_value
+;
+  '
+  
+  
+  
+  sql <- SqlRender::render(sql,cdmDatabaseSchema=connectionDetails2$cdmDatabaseSchema)
+  #cat(sql)
+  sql <- SqlRender::translate(sql,targetDialect = connectionDetails$dbms)
+
+  conn <- DatabaseConnector::connect(connectionDetails)
+  data <- DatabaseConnector::querySql(conn, sql)
+  #View(data)
+  
+  DatabaseConnector::dbDisconnect(conn)
+  return(data)
+}  
+  
 #' Execute all components of the DataQuality study (resultsDatabaseSchema is where Achilles results are)
 #' @param connectionDetails connection
 #' @param connectionDetails2 more study parameters
 
 #' @export
 dashboardLabThresholds <- function(connectionDetails,
-                      connectionDetails2
+                      connectionDetails2,runViaAchilles=FALSE
                       ){
   
   
@@ -438,6 +526,9 @@ dashboardLabThresholds <- function(connectionDetails,
   #add readme file
   file.copy(system.file("dqd/readme.txt",package="DataQuality"), exportFolder)
   #multiple steps here exporting to export folder
+  
+  if (runViaAchilles) {
+  
   writeLines("----Running some Achilles Measures")
   Achilles::achilles(connectionDetails = connectionDetails
                      ,cdmDatabaseSchema = connectionDetails2$cdmDatabaseSchema
@@ -471,25 +562,19 @@ dashboardLabThresholds <- function(connectionDetails,
   selected<-units2 %>% dplyr::filter( count_value>100 & unit_concept_id !=0 )
   writeLines(paste("-----count of suitable measurements for analysis:",nrow(selected)))
   
-  # doTree(connectionDetails,
-  #        connectionDetails2$cdmDatabaseSchema,
-  #        resultsDatabaseSchema = resultsDatabaseSchema,
-  #        oracleTempSchema = resultsDatabaseSchema,
-  #        cdmVersion = cdmVersion,
-  #        workFolder = workFolder)
-  # 
-  # doSelectiveExport(connectionDetails,
-  #                   cdmDatabaseSchema,
-  #                   resultsDatabaseSchema = resultsDatabaseSchema,
-  #                   oracleTempSchema = resultsDatabaseSchema,
-  #                   cdmVersion = cdmVersion,
-  #                   workFolder = workFolder)
-  # 
-  #export of data
-  #done separately for now, may be included later
-  writeLines(paste("--writing some output to export folder:",exportFolder))
   write.csv(selected,file = file.path(exportFolder,'SuitableMeasurementsAndUnits.csv'),row.names = F)
   write.csv(a,file = file.path(exportFolder,'ThresholdsA.csv'),row.names = F)
+  }
+  
+  #custom percentiles
+  b<-customMeasure(connectionDetails = connectionDetails,connectionDetails2 = connectionDetails2)
+  
+  #done separately for now, may be included later
+  writeLines(paste("--writing some output to export folder:",exportFolder))
+  
+  
+  write.csv(b,file = file.path(exportFolder,'ThresholdsB.csv'),row.names = F)
+  
   
   #final cleanup
   writeLines("--Done with dashboardLabThreshold")
