@@ -1,6 +1,6 @@
 # Data quality
 
-This is an R package that has sume utilities and also supports an informatics study that focuses on data quality (rather than a clinical question). It may also support development of other tools.
+This is an R package that has sume utilities and also supports  informatics studies that focuses on data quality (rather than a clinical question). It may also support development of other tools.
 
 For the study, the protocol is available in extras folder.
 
@@ -9,23 +9,37 @@ Forum link: http://forums.ohdsi.org/t/ohdsi-informatics-study-data-quality/1857/
 The package was extended to also provide additional function.
 There are several  usage scenarios.
 
-1. Generate MIAD (minumum information about dataset) as .csv file that can be added to an OHDSI study
-2. Participate on DataQuality study (with later step for sharing of the limited data about your dataset)
-3. Run local report on Data Quality (not shared with anybody)
-4. Run development version of Data Quality (DQ) checks
-5. Participate on annual 'State of the Network' report and address
-6. Support development of Data Quality Dashboard
+- Support development of Data Quality Dashboard 
+- Generate MIAD (minumum information about dataset) as .csv file that can be added to an OHDSI study
+- Participate on DataQuality study (with later step for sharing of the limited data about your dataset)
+- Run local report on Data Quality (not shared with anybody)
+- Run development version of Data Quality (DQ) checks
+- Participate on annual 'State of the Network' report and address
+
 
 
 # Package updates
 
-## v4 (2019-12-13)
-- adding support for DQD (initial part)
+## v4 (2020-01-24)
+- adding support for DQD 
 
 ## v3
 - adding MIAD
 
-# 1.Generate MIAD (minumum information about a dataset)
+
+# Support development of Data Quality Dashboard
+
+Package has functions that support addition of more rules and knowledge base items to the Data Quality Dashboard. For example, we want to compute 3rd and 97th percentile (or other parameters) for some lab results to use those as thresholds.
+
+This is related to unit analysis done by https://github.com/vojtechhuser/ThemisConcepts
+
+A site can participate on developing knowledbe base for DQD. Or it can take part on format research study (to be published). Se [extras/protocol](extras/protocol) folder for protocol. 
+
+To run the study, see DQD section in file [extras/TestCode.R](extras/TestCode.R)
+
+
+
+# Generate MIAD (minumum information about a dataset)
 
 A discussion about this function is in this [forum thread](http://forums.ohdsi.org/t/ohdsi-study-comparative-effectiveness-of-alendronate-and-raloxifene-in-reducing-the-risk-of-hip-fracture/2533/13?u=vojtech_huser). 
 This is done by runing the following function. The function will generate a .csv file in 'export' subfolder of the output folder (e.g., c:/temp/export).
@@ -49,7 +63,7 @@ createMIAD <- function(connectionDetails,
                                ,level = 3) 
 ```
 
-# 2.Participate on DataQuality study
+# Participate on DataQuality study
 
 This takes a series of steps described below:
 
@@ -137,7 +151,7 @@ This principle was used in the initial study of Achilles Heel evaluation. (precu
 The tool relies on new computations done by the Achilles tool. Using Achilles version >=1.4 is required
 
 
-# 3.Only run DataQuality locally
+# Only run DataQuality locally
 
 Generate local report (not shared with anyone, creates a local .DOCX file)
 First the executeDQ function must be run. This creates a export subfolder.
@@ -166,7 +180,7 @@ writeReport(exportFolder = exportFolder,
 ```
 
 
-# 4. Run developmental DQ checks
+# Run developmental DQ checks
 
 Themis aims to generate stricter conventions. The checks tested here will be incorporated into `Achilles Heel`.  
 
@@ -210,11 +224,8 @@ cT #view the output
 
 Example output is [here](inst/csv/ThemisMeasurementsUnitsCheck.csv)
 
-# 5. Participate on annual 'State of the Network' report and address
+# Participate on annual 'State of the Network' report and address
 
 In order to be listed, email to the report coortinator (VH) your MIAD level 2 CSV file.
 
 
-# 6. Data Quality Dashboard
-
-Package has functions that support addition of more rules and knowledge base items to the Data Quality Dashboard. For example, we want to compute 3rd and 97th percentile for some lab results to use those as thresholds.
