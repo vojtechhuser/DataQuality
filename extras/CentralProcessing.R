@@ -113,6 +113,13 @@ dqd %>% count(cdmTableName,cdmFieldName)
 d$STRATUM_1 %<>% as.integer()
 dqd$unitConceptId %<>% as.integer()
 expert <-dqd %>% dplyr::filter(cdmFieldName=='MEASUREMENT_CONCEPT_ID' )
+nrow(expert)
+names(expert)
+elabs<-expert %>% group_by(conceptId,conceptName) %>% summarise(unitcnt=n(),units=paste(unitConceptName,collapse = "|"))
+
+#330 lab tests
+elabs %>% write_csv('extras/DqdResults/DQD-expert-driven-A-lab-list.csv')  
+
 names(expert)
 ddriven<-d %>% rename(conceptId=STRATUM_1,unitConceptId=STRATUM_2)  %>% select(conceptId,unitConceptId) %>% unique()
 

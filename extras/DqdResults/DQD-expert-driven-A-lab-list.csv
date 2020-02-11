@@ -1,0 +1,331 @@
+conceptId,conceptName,unitcnt,units
+2212226,Bilirubin; total,2,gram per deciliter|milligram per deciliter
+2212227,Bilirubin; direct,7,gram per deciliter|nanomole per liter|millimole per liter|microgram per deciliter|milligram per deciliter|nanogram per milliliter|milliequivalent per liter
+2212241,Calcium; total,5,gram per deciliter|millimole per liter|milligram per deciliter|picogram per milliliter|milligram per milliliter
+2212250,Carbon dioxide (bicarbonate),2,millimole per liter|milliequivalent per liter
+2212263,Chloride; blood,3,millimole per liter|milligram per deciliter|milliequivalent per liter
+2212285,Creatine,1,milligram per deciliter
+2212290,"Creatine kinase (CK), (CPK); total",8,gram per deciliter|millimole per liter|nanogram per deciliter|microgram per deciliter|milligram per deciliter|nanogram per milliliter|thousand per microliter|milliequivalent per liter
+2212333,Ferritin,6,percent|femtoliter|gram per deciliter|milligram per deciliter|nanogram per milliliter|thousand per microliter
+2212392,Hemoglobin; glycosylated (A1C),5,percent|picogram|nanomole per liter|milligram per deciliter|picogram per milliliter
+2212421,Iron,3,percent|microgram per deciliter|nanogram per milliliter
+2212427,Lactate (lactic acid),1,millimole per liter
+2212441,Lipase,1,percent
+2212449,"Lipoprotein, direct measurement; high density cholesterol (HDL cholesterol)",1,milligram per deciliter
+2212451,"Lipoprotein, direct measurement; LDL cholesterol",2,percent|milligram per deciliter
+2212453,Magnesium,6,percent|nanomole per liter|millimole per liter|microgram per deciliter|milligram per deciliter|milliequivalent per liter
+2212517,"Phosphatase, alkaline",2,gram per deciliter|milligram per deciliter
+2212523,Phosphorus inorganic (phosphate),3,gram per deciliter|millimole per liter|milligram per deciliter
+2212531,"Potassium; serum, plasma or whole blood",2,millimole per liter|milliequivalent per liter
+2212539,Prolactin,1,nanogram per milliliter
+2212542,Prostate specific antigen (PSA); total,2,milligram per deciliter|nanogram per milliliter
+2212585,Testosterone; total,2,percent|nanogram per deciliter
+2212593,Thyroid stimulating hormone (TSH),1,percent
+2212600,Triglycerides,2,percent|milligram per deciliter
+2212643,Blood count; hemoglobin (Hgb),3,gram per deciliter|microgram per deciliter|milligram per deciliter
+2212742,"Thromboplastin time, partial (PTT); plasma or whole blood",1,percent
+3000034,Microalbumin [Mass/volume] in Urine,6,milligram per gram|milligram per liter|microgram per deciliter|microgram per milligram|milligram per deciliter|microgram per milliliter
+3000185,Iron saturation [Mass Fraction] in Serum or Plasma,1,percent
+3000483,Glucose [Mass/volume] in Blood,1,milligram per deciliter
+3000551,Thyroxine (T4) free index in Serum or Plasma by calculation,1,percent
+3000593,Cobalamin (Vitamin B12) [Mass/volume] in Serum or Plasma,4,nanogram per liter|picomole per liter|nanomole per liter|picogram per milliliter
+3000620,Complement C3 [Mass/volume] in Serum or Plasma,3,gram per liter|milligram per liter|milligram per deciliter
+3000905,Leukocytes [#/volume] in Blood by Automated count,11,unit|percent|per microliter|cubic millimeter|million per milliliter|milligram per deciliter|thousand per microliter|thousand per cubic millimeter|thousand per milliliter|gram of creatinine|kilopascal
+3000963,Hemoglobin [Mass/volume] in Blood,17,percent|picogram|milligram|centimeter|femtoliter|milliliter|gram per liter|gram per deciliter|pound (US)|millimole per liter|microgram per deciliter|per deciliter|ounce (avoirdupois)|point|kilogram|meter|milligram per kilogram
+3001122,Ferritin [Mass/volume] in Serum or Plasma,3,unit|microgram per liter|nanogram per milliliter
+3001247,Common Ragweed IgE Ab [Units/volume] in Serum,1,thousand per microliter
+3001308,Cholesterol in LDL [Moles/volume] in Serum or Plasma,2,nanomole per liter|millimole per liter
+3001318,Cholesterol.total/Cholesterol in HDL [Percentile],1,percent
+3001420,Magnesium [Mass/volume] in Serum or Plasma,3,millimole per liter|milligram per deciliter|milliequivalent per liter
+3001604,Monocytes [#/volume] in Blood,2,percent|thousand per microliter
+3001784,Prostate Specific Ag Free/Prostate specific Ag.total in Serum or Plasma,1,percent
+3001802,Microalbumin/Creatinine [Mass Ratio] in Urine,4,percent|milligram per gram|microgram per milligram|milligram per gram of creatinine
+3002009,Glucose [Mass/volume] in Serum or Plasma --12 hours fasting,1,milligram per deciliter
+3002030,Lymphocytes/100 leukocytes in Blood,8,liter|percent|femtoliter|per microliter|cubic millimeter|milligram per deciliter|volume percent|microliter
+3002091,Choriogonadotropin [Moles/volume] in Serum or Plasma,1,millimole per liter
+3002109,Cholesterol in LDL/Cholesterol in HDL [Mass Ratio] in Serum or Plasma,1,ratio
+3002112,Folate [Mass/volume] in Blood,2,percent|nanogram per milliliter
+3002131,Prostate specific Ag [Units/volume] in Serum or Plasma,1,nanogram per milliliter
+3002400,Iron [Mass/volume] in Serum or Plasma,3,percent|micromole per liter|microgram per deciliter
+3002417,Prothrombin time (PT) in Blood by Coagulation assay,2,second|second
+3002617,Acetaminophen [Mass/volume] in Serum or Plasma,3,milligram per liter|nanogram per milliliter|microgram per milliliter
+3002809,Reticulocytes/100 erythrocytes in Blood by Manual,1,percent
+3002971,Nuclear Ab [Titer] in Serum by Immunofluorescence,1,titer
+3003215,Lymphocytes [#/volume] in Blood by Manual count,3,percent|per microliter|thousand per microliter
+3003282,Leukocytes [#/volume] in Blood by Manual count,1,thousand per microliter
+3003338,MCHC [Mass/volume],2,percent|gram per deciliter
+3003458,Phosphate [Moles/volume] in Serum or Plasma,2,millimole per liter|milligram per deciliter
+3003624,Lipids [Mass/volume] in Serum,1,milligram per deciliter
+3003785,Carcinoembryonic Ag [Mass/volume] in Serum or Plasma,3,unit|microgram per liter|nanogram per milliliter
+3004077,Glucose [Mass/volume] in Capillary blood,1,milligram per deciliter
+3004239,Creatinine [Mass/time] in 24 hour Urine,3,milliliter per minute|gram per 24 hours|milligram per 24 hours
+3004248,Sex hormone binding globulin [Moles/volume] in Serum or Plasma,2,percent|nanomole per liter
+3004249,Systolic blood pressure,1,millimeter mercury column
+3004295,Urea nitrogen [Mass/volume] in Blood,1,milligram per deciliter
+3004327,Lymphocytes [#/volume] in Blood by Automated count,6,percent|per microliter|million per milliliter|thousand per microliter|thousand per cubic millimeter|thousand per milliliter
+3004410,Hemoglobin A1c/Hemoglobin.total in Blood,2,percent|millimole per mole
+3004722,Prolactin [Mass/volume] in Serum or Plasma,1,nanogram per milliliter
+3004789,Transferrin [Mass/volume] in Serum or Plasma,4,percent|gram per liter|micromole per liter|milligram per deciliter
+3004905,Lipase [Enzymatic activity/volume] in Serum or Plasma,2,unit per liter|international unit per liter
+3005013,Prostate Specific Ag Free [Mass/volume] in Serum or Plasma,2,microgram per liter|nanogram per milliliter
+3005105,Blasts [#/volume] in Blood,1,thousand per microliter
+3005168,Iron binding capacity.unsaturated [Mass/volume] in Serum or Plasma,2,percent|microgram per deciliter
+3005424,Body surface area,1,square meter
+3005446,Hemoglobin A1/Hemoglobin.total in Blood,1,percent
+3005456,Potassium [Moles/volume] in Blood,2,millimole per liter|milliequivalent per liter
+3005673,Hemoglobin A1c/Hemoglobin.total in Blood by HPLC,1,percent
+3005770,Creatinine renal clearance in 24 hour,3,milliliter per minute|milliliter per minute per 1.73 square meter|milliliter per second
+3005785,Creatine kinase.MB [Mass/volume] in Serum or Plasma,1,nanogram per milliliter
+3006140,Bilirubin.total [Moles/volume] in Serum or Plasma,2,micromole per liter|milligram per deciliter
+3006315,Basophils [#/volume] in Blood,4,percent|thousand per microliter|thousand per cubic millimeter|thousand per liter
+3006504,Eosinophils/100 leukocytes in Blood,5,percent|per microliter|cubic millimeter|volume percent|microliter
+3006576,Bicarbonate [Moles/volume] in Blood,3,millimole per liter|milliequivalent per kilogram|milliequivalent per liter
+3006717,Glucose [Mass/volume] in Serum or Plasma --2 hours post 100 g glucose PO,1,milligram per deciliter
+3006734,White Oak IgE Ab [Units/volume] in Serum,1,percent
+3006906,Calcium [Mass/volume] in Serum or Plasma,4,millimole per liter|milligram per deciliter|picogram per milliliter|milligram per milliliter
+3006923,Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma,9,percent|unit per liter|gram per deciliter|microgram per liter|millimole per liter|microgram per deciliter|milligram per deciliter|international unit per liter|unified atomic mass unit
+3007070,Cholesterol in HDL [Mass/volume] in Serum or Plasma,4,gram per deciliter|micromole per liter|millimole per liter|milligram per deciliter
+3007150,Creatine kinase.MB/Creatine kinase.total in Serum or Plasma by Electrophoresis,2,percent|nanogram per milliliter
+3007220,Creatine kinase [Enzymatic activity/volume] in Serum or Plasma,3,unit per liter|nanogram per milliliter|international unit per liter
+3007263,Hemoglobin A1c/Hemoglobin.total in Blood by calculation,1,percent
+3007332,Glucose [Mass/volume] in Serum or Plasma --1 hour post 75 g glucose PO,1,milligram per deciliter
+3007359,Bilirubin.indirect [Mass/volume] in Serum or Plasma,1,milligram per deciliter
+3007461,Platelets [#/volume] in Blood,1,thousand per microliter
+3008295,Osmolality of Serum or Plasma,4,milliosmole|milliosmole per kilogram|millimole per kilogram|milliosmole per liter
+3008342,Neutrophils/100 leukocytes in Blood by Automated count,1,percent
+3008598,Thyroxine (T4) free [Mass/volume] in Serum or Plasma,1,nanogram per deciliter
+3008893,Testosterone [Mass/volume] in Serum or Plasma,2,percent|nanogram per deciliter
+3009041,Cardiolipin IgG Ab [Units/volume] in Serum by Immunoassay,2,millimole per liter|IgG phospholipid unit
+3009201,Thyrotropin [Units/volume] in Serum or Plasma,4,percent|microunit per milliliter|milli-international unit per liter|milliunit per liter
+3009306,Alpha-1-Fetoprotein [Mass/volume] in Serum or Plasma,2,microgram per liter|nanogram per milliliter
+3009542,Hematocrit [Volume Fraction] of Blood,19,unit|Farad|liter|ratio|percent|milligram|centimeter|femtoliter|milliliter|millimeter|gram per deciliter|pound (US)|milligram per deciliter|thousand per cubic millimeter|volume percent|kilogram|meter|unified atomic mass unit|liter per liter
+3009596,Cholesterol in VLDL [Mass/volume] in Serum or Plasma by calculation,2,microgram per deciliter|milligram per deciliter
+3009682,Cortisol [Mass/volume] in Serum or Plasma,2,nanomole per liter|microgram per deciliter
+3009744,MCHC [Mass/volume] by Automated count,4,percent|picogram|gram per liter|gram per deciliter
+3009797,Basophils/100 leukocytes in Blood by Manual count,1,percent
+3009932,Eosinophils [#/volume] in Blood by Manual count,4,percent|per microliter|thousand per microliter|thousand per cubic millimeter
+3009966,Cholesterol in LDL [Mass/volume] in Serum or Plasma by Direct assay,2,nanomole per liter|milligram per deciliter
+3010084,C peptide [Mass/volume] in Serum or Plasma,1,nanogram per milliliter
+3010084,C reactive protein [Mass/volume] in Serum or Plasma,1,picomole per liter
+3010156,C reactive protein [Mass/volume] in Serum or Plasma by High sensitivity method,3,milligram per liter|milligram per deciliter|nanogram per milliliter
+3010340,Triiodothyronine (T3) [Mass/volume] in Serum or Plasma,3,nanogram per deciliter|milligram per deciliter|nanogram per milliliter
+3010457,Eosinophils/100 leukocytes in Blood by Automated count,1,percent
+3010813,Leukocytes [#/volume] in Blood,10,pH|liter|percent|milligram|milliliter|per microliter|cubic millimeter|thousand per microliter|microliter|cells
+3011099,Sex hormone binding globulin [Mass/volume] in Serum or Plasma,1,nanomole per liter
+3011163,Cholesterol.total/Cholesterol in HDL [Mass Ratio] in Serum or Plasma,2,ratio|percent
+3011335,Digoxin [Mass/volume] in Serum or Plasma,4,nanomole per liter|microgram per liter|nanogram per deciliter|nanogram per milliliter
+3011337,Aldosterone [Mass/volume] in Serum or Plasma,1,nanogram per deciliter
+3011424,Glucose [Mass/volume] in Blood by Automated test strip,1,milligram per deciliter
+3011505,FEV1/FVC,4,liter|ratio|percent|inch (US)
+3011948,Monocytes/100 leukocytes in Blood by Automated count,1,percent
+3011951,Aspergillus fumigatus IgE Ab [Units/volume] in Serum,1,thousand per microliter
+3011960,Natriuretic peptide B [Mass/volume] in Serum or Plasma,1,picogram per milliliter
+3012030,MCH [Entitic mass] by Automated count,2,percent|picogram
+3012095,Magnesium [Moles/volume] in Serum or Plasma,3,millimole per liter|milligram per deciliter|milliequivalent per liter
+3012336,Haptoglobin [Mass/volume] in Serum or Plasma,1,milligram per deciliter
+3012494,Peanut IgE Ab [Units/volume] in Serum,1,percent
+3012516,Albumin [Mass/volume] in Urine,4,gram per deciliter|milligram per liter|milligram per deciliter|microgram per milliliter
+3012544,pH of Venous blood,1,pH
+3012888,Diastolic blood pressure,1,millimeter mercury column
+3013115,Eosinophils [#/volume] in Blood,5,percent|per cubic millimeter|thousand per microliter|thousand per cubic millimeter|thousand per liter
+3013201,Beta-2-Microglobulin [Mass/volume] in Serum or Plasma,7,gram per liter|gram per deciliter|microgram per liter|milligram per liter|milligram per deciliter|nanogram per milliliter|microgram per milliliter
+3013429,Basophils [#/volume] in Blood by Automated count,9,percent|per microliter|million per milliliter|thousand per microliter|thousand per cubic millimeter|per liter|thousand per liter|thousand per milliliter|billion per liter
+3013466,aPTT in Blood by Coagulation assay,1,second
+3013603,Prostate specific Ag [Mass/volume] in Serum or Plasma,3,microgram per liter|nanogram per deciliter|nanogram per milliliter
+3013604,Glucose [Mass/volume] in Serum or Plasma --30 minutes post 75 g glucose PO,1,milligram per deciliter
+3013650,Neutrophils [#/volume] in Blood by Automated count,4,per microliter|thousand per microliter|thousand per cubic millimeter|billion per liter
+3013682,Urea nitrogen [Mass/volume] in Serum or Plasma,3,percent|millimole per liter|milligram per deciliter
+3013707,Erythrocyte sedimentation rate by Westergren method,2,millimeter|millimeter per hour
+3013721,Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma,5,percent|unit per liter|gram per deciliter|milligram per deciliter|international unit per liter
+3013762,Body weight Measured,2,milligram|pound (US)
+3013826,Glucose [Moles/volume] in Serum or Plasma,1,milligram per deciliter
+3013869,Basophils/100 leukocytes in Blood by Automated count,1,percent
+3014173,Calcitriol [Mass/volume] in Serum or Plasma,3,picomole per liter|nanogram per milliliter|picogram per milliliter
+3014576,Chloride [Moles/volume] in Serum or Plasma,6,gram per deciliter|millimole per liter|milligram per deciliter|nanogram per milliliter|milliequivalent per deciliter|milliequivalent per liter
+3014716,Glucose [Mass/volume] in Serum or Plasma --1 hour post 100 g glucose PO,1,milligram per deciliter
+3014791,Apolipoprotein B [Mass/volume] in Serum or Plasma,1,milligram per deciliter
+3015076,Soybean IgE Ab [Units/volume] in Serum,1,percent
+3015183,Erythrocyte sedimentation rate,2,percent|millimeter per hour
+3015280,Blasts [#/volume] in Blood by Manual count,1,thousand per microliter
+3015375,Amiodarone [Mass/volume] in Serum or Plasma,2,milligram per liter|microgram per milliliter
+3015377,Calcium [Moles/volume] in Serum or Plasma,3,gram per deciliter|millimole per liter|milligram per deciliter
+3015473,Bicarbonate [Moles/volume] in Plasma,2,millimole per liter|milliequivalent per liter
+3015586,Segmented neutrophils [#/volume] in Blood,3,percent|thousand per microliter|thousand per cubic millimeter
+3015632,"Carbon dioxide, total [Moles/volume] in Serum or Plasma",4,per microliter|millimole per liter|milligram per deciliter|milliequivalent per liter
+3015731,Bermuda grass IgE Ab [Units/volume] in Serum,1,thousand per microliter
+3015736,pH of Urine,1,pH
+3015774,Calcium.ionized [Moles/volume] in Serum or Plasma by calculation,1,milligram per deciliter
+3015813,Cardiolipin IgM Ab [Units/volume] in Serum by Immunoassay,1,IgM phospholipid unit
+3015956,Eosinophils/100 leukocytes in Blood by Manual count,2,percent|thousand per microliter
+3016049,Testosterone Free [Mass/volume] in Serum or Plasma,3,percent|nanogram per deciliter|picogram per milliliter
+3016201,Valproate [Mass/volume] in Serum or Plasma,2,milligram per liter|microgram per milliliter
+3016244,Insulin [Units/volume] in Serum or Plasma,3,microunit per milliliter|international unit per milliliter|milliunit per liter
+3016258,Waist Circumference at umbilicus by Tape measure,2,centimeter|inch (US)
+3016290,aPTT in Control Blood by Coagulation assay,1,second
+3016293,Bicarbonate [Moles/volume] in Serum or Plasma,2,millimole per liter|milliequivalent per liter
+3016311,Creatine kinase.MB/Creatine kinase.total in Serum or Plasma,1,percent
+3016723,Creatinine [Mass/volume] in Serum or Plasma,5,gram per deciliter|micromole per liter|millimole per liter|milligram per deciliter|milliliter per minute per 1.73 square meter
+3016771,Amylase [Enzymatic activity/volume] in Serum or Plasma,1,unit per liter
+3016913,Creatine kinase.MM [Enzymatic activity/volume] in Serum or Plasma by Electrophoresis,1,percent
+3016991,Thyroxine (T4) [Mass/volume] in Serum or Plasma,4,gram per deciliter|nanogram per deciliter|microgram per deciliter|milligram per deciliter
+3017044,Thyrotropin receptor Ab [Units/volume] in Serum,3,percent|unit per liter|international unit per liter
+3017250,Creatinine [Mass/volume] in Urine,8,gram per liter|milligram per gram|milligram per liter|millimole per liter|milligram per deciliter|nanogram per milliliter|milligram per milliliter|milliliter per minute per 1.73 square meter
+3017501,Neutrophils [#/volume] in Blood by Manual count,2,per microliter|thousand per microliter
+3017732,Neutrophils [#/volume] in Blood,4,cubic millimeter|per cubic millimeter|thousand per microliter|thousand per cubic millimeter
+3017766,Complement C4 [Mass/volume] in Serum or Plasma,3,gram per liter|milligram per liter|milligram per deciliter
+3018010,Neutrophils/100 leukocytes in Blood,1,percent
+3018081,Beta-2-Microglobulin [Mass/volume] in Urine,2,microgram per liter|milligram per liter
+3018229,Myelocytes/100 leukocytes in Blood by Manual count,1,percent
+3018311,Urea nitrogen/Creatinine [Mass Ratio] in Serum or Plasma,3,ratio|percent|milligram per milligram of creatinine
+3018677,aPTT in Platelet poor plasma by Coagulation assay,1,second
+3018910,Alkaline phosphatase.bone [Mass/volume] in Serum or Plasma,2,microgram per liter|nanogram per milliliter
+3019069,Monocytes/100 leukocytes in Blood,2,percent|volume percent
+3019198,Lymphocytes [#/volume] in Blood,3,percent|per microliter|thousand per microliter
+3019550,Sodium [Moles/volume] in Serum or Plasma,3,percent|millimole per liter|milliequivalent per liter
+3019676,Bilirubin.conjugated [Mass/volume] in Serum or Plasma,1,milligram per deciliter
+3019800,Troponin T.cardiac [Mass/volume] in Serum or Plasma,2,microgram per liter|nanogram per milliliter
+3019812,Kappa light chains [Mass/volume] in Serum or Plasma,2,milligram per liter|milligram per deciliter
+3019897,Erythrocyte distribution width [Ratio] by Automated count,2,percent|femtoliter
+3019900,Cholesterol [Moles/volume] in Serum or Plasma,2,millimole per liter|milligram per deciliter
+3020138,Lactate [Mass/volume] in Serum or Plasma,2,millimole per liter|milligram per deciliter
+3020149,Calcidiol [Mass/volume] in Serum or Plasma,3,nanomole per liter|nanogram per milliliter|picogram per milliliter
+3020399,Glucose [Mass/volume] in Urine,2,milligram per deciliter|milliosmole per kilogram
+3020416,Erythrocytes [#/volume] in Blood by Automated count,9,percent|gram per deciliter|per cubic millimeter|million per microliter|million per milliliter|thousand per microliter|thousand per cubic millimeter|thousand per milliliter|microliter
+3020460,C reactive protein [Mass/volume] in Serum or Plasma,2,milligram per liter|milligram per deciliter
+3020509,Albumin/Globulin [Mass Ratio] in Serum or Plasma,1,ratio
+3020564,Creatinine [Moles/volume] in Serum or Plasma,2,micromole per liter|milligram per deciliter
+3020630,Protein [Mass/volume] in Serum or Plasma,3,percent|gram per liter|gram per deciliter
+3020682,Albumin/Creatinine [Ratio] in Urine,1,ratio
+3020891,Body temperature,2,Farad|degree Celsius
+3021044,Iron binding capacity [Mass/volume] in Serum or Plasma,3,percent|micromole per liter|microgram per deciliter
+3021119,Calcium.ionized [Moles/volume] in Blood,3,millimole per liter|milligram per deciliter|milliequivalent per liter
+3021447,Carbon dioxide [Partial pressure] in Venous blood,1,millimeter mercury column
+3021614,Rheumatoid factor [Units/volume] in Serum or Plasma,1,international unit per milliliter
+3021717,Triiodothyronine resin uptake (T3RU) in Serum or Plasma,1,percent
+3021737,Glucose [Mass/volume] in Serum or Plasma --2 hours post meal,1,milligram per deciliter
+3022038,Triglyceride [Mass/volume] in Blood,1,milligram per deciliter
+3022096,Basophils/100 leukocytes in Blood,1,percent
+3022192,Triglyceride [Mass/volume] in Serum or Plasma,3,percent|millimole per liter|milligram per deciliter
+3022217,INR in Platelet poor plasma by Coagulation assay,18,unit|Farad|liter|ratio|times|percent|second|milligram|centimeter|milliliter|millimole per liter|million per milliliter|milligram per deciliter|point|kilogram|millisecond|parsec|volt
+3022466,Insulin [Mass/volume] in Serum or Plasma,1,microunit per milliliter
+3022521,Erythrocyte sedimentation rate by Wintrobe method,2,millimeter|millimeter per hour
+3022548,Glucose [Mass/volume] in Cerebral spinal fluid,1,milligram per deciliter
+3022616,Phenytoin [Mass/volume] in Serum or Plasma,2,milligram per liter|microgram per milliliter
+3022709,Promyelocytes [#/volume] in Blood,1,thousand per microliter
+3022756,Ceruloplasmin [Mass/volume] in Serum or Plasma,4,gram per liter|micromole per liter|milligram per liter|milligram per deciliter
+3022826,Microalbumin/Creatinine [Ratio] in Urine,3,milligram per gram|microgram per milligram|milligram per millimole of creatinine
+3022914,Cancer Ag 19-9 [Units/volume] in Serum or Plasma,4,unit per milliliter|kilounit per liter|arbitrary unit per milliliter|international unit per milliliter
+3023017,Iron/Transferrin [Mass Ratio] in Serum or Plasma,1,percent
+3023103,Potassium [Moles/volume] in Serum or Plasma,3,millimole per liter|milliequivalent per liter|millimole
+3023314,Hematocrit [Volume Fraction] of Blood by Automated count,2,percent|liter per liter
+3023351,European house dust mite IgE Ab [Units/volume] in Serum,3,percent|kilounit per liter|thousand per microliter
+3023361,Fibrin D-dimer [Units/volume] in Platelet poor plasma,4,microgram per liter|milligram per liter|nanogram per milliliter|microgram per milliliter
+3023420,DNA double strand Ab [Units/volume] in Serum,1,international unit per milliliter
+3023465,Gamma globulin [Mass/volume] in Serum or Plasma by Electrophoresis,3,percent|gram per liter|gram per deciliter
+3023520,Reticulocytes [#/volume] in Blood,3,percent|thousand per microliter|thousand per cubic millimeter
+3023599,MCV [Entitic volume] by Automated count,1,femtoliter
+3023643,Blasts/100 leukocytes in Blood by Manual count,2,million per milliliter|thousand per microliter
+3023694,Leukocytes [#/volume] in Cerebral spinal fluid by Manual count,2,per microliter|per cubic millimeter
+3023884,Cholesterol in HDL/Cholesterol.total [Mass Ratio] in Serum or Plasma,1,percent
+3024128,Bilirubin.total [Mass/volume] in Serum or Plasma,4,gram per deciliter|micromole per liter|millimole per liter|milligram per deciliter
+3024171,Respiratory rate,2,per minute|minute
+3024250,Calcium.ionized [Mass/volume] in Serum or Plasma by Ion-selective membrane electrode (ISE),2,millimole per liter|milligram per deciliter
+3024354,Oxygen [Partial pressure] in Venous blood,1,millimeter mercury column
+3024386,Platelet mean volume [Entitic volume] in Blood by Rees-Ecker,1,femtoliter
+3024561,Albumin [Mass/volume] in Serum or Plasma,4,gram per liter|gram per deciliter|millimole per liter|milligram per deciliter
+3024641,Urea nitrogen [Moles/volume] in Serum or Plasma,2,millimole per liter|milligram per deciliter
+3024653,FEV1,6,liter|ratio|percent|milliliter|liter per minute|inch (US)
+3024731,MCV [Entitic volume],1,femtoliter
+3024762,Glucose [Mass/volume] in Serum or Plasma --8 hours fasting,1,milligram per deciliter
+3024763,Rheumatoid factor [Units/volume] in Serum by Nephelometry,2,international unit per liter|international unit per milliliter
+3024929,Platelets [#/volume] in Blood by Automated count,6,per microliter|per cubic millimeter|million per milliliter|thousand per microliter|thousand per cubic millimeter|billion per liter
+3025285,Estradiol (E2) [Mass/volume] in Serum or Plasma,4,nanogram per liter|picomole per liter|nanogram per deciliter|picogram per milliliter
+3025315,Body weight,5,gram|milligram|pound (US)|ounce (avoirdupois)|kilogram
+3025455,Estriol (E3).unconjugated [Mass/volume] in Serum or Plasma,1,nanogram per milliliter
+3025673,Glucose [Mass/volume] in Serum or Plasma --2 hours post 75 g glucose PO,1,milligram per deciliter
+3025696,Lithium [Mass/volume] in Serum or Plasma,3,millimole per liter|microgram per milliliter|milliequivalent per liter
+3026250,Tacrolimus [Mass/volume] in Blood,1,nanogram per milliliter
+3026361,Erythrocytes [#/volume] in Blood,12,percent|femtoliter|milliliter|millimeter|per microliter|cubic millimeter|gram per deciliter|per high power field|million per microliter|cells per cubic millimeter|microliter|cells
+3026453,Cholesterol in IDL [Mass/volume] in Serum or Plasma,1,milligram per deciliter
+3026782,Osmolality of Urine,3,milliosmole|milliosmole per kilogram|milliosmole per liter
+3026910,Gamma glutamyl transferase [Enzymatic activity/volume] in Serum or Plasma,4,unit|unit per liter|microgram per milliliter|international unit per liter
+3026925,Triiodothyronine (T3) Free [Mass/volume] in Serum or Plasma,3,picomole per liter|picogram per deciliter|picogram per milliliter
+3027035,Albumin [Mass/time] in 24 hour Urine,4,milligram per gram|milligram per deciliter|microgram per milliliter|milligram per 24 hours
+3027114,Cholesterol [Mass/volume] in Serum or Plasma,3,gram per deciliter|millimole per liter|milligram per deciliter
+3027144,Progesterone [Mass/volume] in Serum or Plasma,1,nanogram per milliliter
+3027238,Thyroperoxidase Ab [Units/volume] in Serum or Plasma,1,international unit per milliliter
+3027273,Bicarbonate [Moles/volume] in Venous blood,2,millimole per liter|milliequivalent per liter
+3027361,Cholecalciferol (Vit D3) [Mass/volume] in Serum or Plasma,2,nanogram per milliliter|picogram per milliliter
+3027457,Glucose [Mass/volume] in Serum or Plasma --3 hours post 100 g glucose PO,1,milligram per deciliter
+3027597,Bilirubin.direct [Mass/volume] in Serum or Plasma,4,gram per deciliter|micromole per liter|millimole per liter|milligram per deciliter
+3027651,Basophils [#/volume] in Blood by Manual count,3,per microliter|thousand per microliter|thousand per cubic millimeter
+3027801,Oxygen [Partial pressure] in Arterial blood,1,millimeter mercury column
+3027939,Cholesterol in HDL/Cholesterol in LDL [Mass Ratio] in Serum or Plasma,1,ratio
+3027970,Globulin [Mass/volume] in Serum by calculation,2,gram per liter|gram per deciliter
+3028108,Segmented neutrophils/100 leukocytes in Blood by Manual count,1,percent
+3028286,Albumin [Mass/volume] in Serum or Plasma by Electrophoresis,4,percent|gram per liter|gram per deciliter|milligram per liter
+3028288,Cholesterol in LDL [Mass/volume] in Serum or Plasma by calculation,3,nanomole per liter|nanogram per deciliter|milligram per deciliter
+3028437,Cholesterol in LDL [Mass/volume] in Serum or Plasma,3,nanomole per liter|millimole per liter|milligram per deciliter
+3028615,Eosinophils [#/volume] in Blood by Automated count,9,percent|per microliter|million per milliliter|thousand per microliter|thousand per cubic millimeter|per liter|thousand per milliliter|billion per liter|gram of total protein
+3029187,Natriuretic peptide.B prohormone N-Terminal [Mass/volume] in Serum or Plasma,3,nanogram per deciliter|nanogram per milliliter|picogram per milliliter
+3030366,Cystatin C [Mass/volume] in Serum or Plasma,1,milligram per liter
+3030367,Cyclic citrullinated peptide IgG Ab [Units/volume] in Serum or Plasma,1,unit per milliliter
+3032080,INR in Blood by Coagulation assay,7,unit|week|liter|ratio|year|second|month
+3032567,Hepatitis B virus DNA [Units/volume] (viral load) in Serum or Plasma by NAA with probe detection,1,international unit per milliliter
+3033526,Urate [Mass/volume] in Urine,2,milligram per deciliter|milligram per 24 hours
+3033543,Specific gravity of Urine,1,unified atomic mass unit
+3033575,Monocytes [#/volume] in Blood by Automated count,6,percent|per microliter|million per milliliter|thousand per microliter|thousand per cubic millimeter|thousand per milliliter
+3034107,Monocytes [#/volume] in Blood by Manual count,1,percent
+3034204,Urea [Mass/volume] in Serum or Plasma,1,milligram per deciliter
+3034426,Prothrombin time (PT),2,percent|second
+3034639,Hemoglobin A1c [Mass/volume] in Blood,2,percent|gram per deciliter
+3034739,Osmolality of Serum or Plasma by calculation,3,milliosmole|milliosmole per kilogram|millimole per kilogram
+3035941,MCH [Entitic mass],2,percent|picogram
+3035995,Alkaline phosphatase [Enzymatic activity/volume] in Serum or Plasma,4,unit per liter|gram per deciliter|milligram per deciliter|international unit per liter
+3036277,Body height,5,centimeter|millimeter|inch (international)|inch (US)|meter
+3036426,Calcium.ionized [Mass/volume] in Blood,4,micromole per liter|millimole per liter|milligram per deciliter|milliequivalent per liter
+3036535,Thyroglobulin [Mass/volume] in Serum or Plasma,1,nanogram per milliliter
+3036663,Lymphocytes/100 leukocytes in Cerebral spinal fluid by Manual count,1,percent
+3036780,American house dust mite IgE Ab [Units/volume] in Serum,1,thousand per microliter
+3037110,Fasting glucose [Mass/volume] in Serum or Plasma,5,unit|millimole per liter|milligram per deciliter|nanogram per milliliter|picogram per milliliter
+3037121,Protein [Mass/volume] in Urine,5,percent|gram per deciliter|milligram per liter|milligram per deciliter|milligram per 24 hours
+3037187,Fasting glucose [Mass/volume] in Venous blood,1,milligram per deciliter
+3037511,Lymphocytes/100 leukocytes in Blood by Automated count,1,percent
+3037551,Cancer Ag 125 [Units/volume] in Serum or Plasma,5,micromole per liter|unit per milliliter|kilounit per liter|arbitrary unit per milliliter|international unit per milliliter
+3037556,Urate [Mass/volume] in Serum or Plasma,2,gram per deciliter|milligram per deciliter
+3037672,Protein.monoclonal/Protein.total in Urine by Electrophoresis,1,percent
+3038058,Lymphocytes/100 leukocytes in Blood by Manual count,3,percent|million per milliliter|thousand per microliter
+3038205,Alternaria alternata IgE Ab [Units/volume] in Serum,1,thousand per microliter
+3038553,Body mass index (BMI) [Ratio],1,kilogram per square meter
+3039000,Anion gap in Blood,4,gram per deciliter|millimole per liter|milliequivalent|milliequivalent per liter
+3039211,Alpha-1-fetoprotein.tumor marker [Moles/volume] in Serum or Plasma,1,micromole per liter
+3039381,"t(9;22)(q34.1;q11)(ABL1,BCR) b2a2 fusion transcript/control transcript [# Ratio] in Blood or Tissue by Molecular genetics method",1,percent
+3039783,Alpha-1-fetoprotein.tumor marker [Mass/volume] in Serum or Plasma,2,microgram per liter|nanogram per milliliter
+3040168,Immature granulocytes [#/volume] in Blood,2,thousand per microliter|thousand per cubic millimeter
+3041559,"t(9;22)(q34.1;q11)(ABL1,BCR) b3a2 fusion transcript/control transcript [# Ratio] in Blood or Tissue by Molecular genetics method",1,percent
+3043000,Haptoglobin [Mass/volume] in Serum or Plasma by Nephelometry,2,gram per deciliter|milligram per deciliter
+3045716,Anion gap in Serum or Plasma,2,millimole per liter|milliequivalent per liter
+3046279,Procalcitonin [Mass/volume] in Serum or Plasma,1,nanogram per milliliter
+3046485,Urea nitrogen/Creatinine [Mass Ratio] in Blood,1,percent
+3046569,Transferrin receptor.soluble [Moles/volume] in Serum or Plasma,1,nanomole per liter
+3048863,Creatine kinase.MB/Creatine kinase.total [Ratio] in Serum or Plasma,1,percent
+3049187,"Glomerular filtration rate/1.73 sq M predicted among non-blacks [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)",7,unit|liter|milliliter|milliliter per minute|milliliter per minute per 1.73 square meter|inch (US)|meter
+3050479,Immature granulocytes/100 leukocytes in Blood,1,percent
+3051825,Creatinine [Mass/volume] in Blood,1,milligram per deciliter
+3053181,Prothrombin time (PT) in Capillary blood by Coagulation assay,1,second
+3053283,"Glomerular filtration rate/1.73 sq M predicted among blacks [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)",3,unit|milliliter per minute|milliliter per minute per 1.73 square meter
+4008265,Total cholesterol measurement,4,percent|gram per liter|nanomole per liter|milligram per deciliter
+4146380,Alanine aminotransferase measurement,1,unit
+4149519,Glucose measurement,2,gram per liter|nanomole per liter
+4152194,Systolic blood pressure,1,millimeter mercury column
+4154790,Diastolic blood pressure,2,percent|millimeter mercury column
+4208414,C-reactive protein measurement,3,milligram|milligram per liter|milligram per deciliter
+4301868,Pulse rate,2,per minute|heartbeat
+40758583,Hemoglobin A1c in Blood,8,liter|percent|picogram|milligram|gram per deciliter|pound (US)|milligram per deciliter|inch (US)
+40762351,Hemoglobin [Moles/volume] in Blood,1,gram per deciliter
+40762632,Urea nitrogen [Moles/volume] in Blood,1,milligram per deciliter
+40762887,Creatinine [Moles/volume] in Blood,2,micromole per liter|milligram per deciliter
+40764999,"Glomerular filtration rate/1.73 sq M.predicted [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (CKD-EPI)",2,milliliter per minute|milliliter per minute per 1.73 square meter
+40765040,25-Hydroxyvitamin D2+25-Hydroxyvitamin D3 [Mass/volume] in Serum or Plasma,2,nanogram per milliliter|picogram per milliliter
+40771922,"Glomerular filtration rate/1.73 sq M.predicted [Volume Rate/Area] in Serum, Plasma or Blood",2,milliliter per minute|milliliter per minute per 1.73 square meter
+42869588,Hematocrit [Pure volume fraction] of Blood by Automated count,1,percent
