@@ -45,7 +45,10 @@ load('o:/athena/concept.rda')
 #lkup<-concept %>% filter(vocabulary_id %in% c('CPT4','ICD9Proc','CDT','HCPCS','ICD9CM','ICD10CM','ICD10PCS'))
 
 #reading a single site data (for now) 
-sfiles<-c('c:/temp/dqd/export/1ThresholdsA.csv','c:/temp/dqd/ThresholdsA.csv')
+f<-'d:/OneDrive - National Institutes of Health/temp/dqd/export'
+
+sfiles<-c(file.path(f,'1ThresholdsA.csv'))
+sfiles<-c(file.path(f,'1ThresholdsA.csv'),file.path(f,'ThresholdsA.csv'))
 ll<-map(sfiles,read_csv)
 ll
 
@@ -61,6 +64,7 @@ names(d)
 d2<-d %>% filter(stratum_1 != 0) %>% filter(stratum_2 != 0) %>% left_join(sconcept,by=c('stratum_1'='concept_id')) %>%
   left_join(sconcept,by=c('stratum_2'='concept_id')) 
 names(d2)
+
 #remove columns that are not needed
 d3<-d2 %>% select(-stratum_3,-stratum_4,-stratum_5,-p25_value,-p75_value) %>% 
   filter(count_value >=100 ) %>% arrange(stratum_1,desc(count_value) )
@@ -89,3 +93,52 @@ d4<-d3 %>% select(-count_value,-median_value,-stdev_value,-avg_value,-site)
 
 d4 %>% write_csv('extras/DqdResults/thresholds-list-A.csv')
 nrow(d4)
+
+
+#read DD checks
+library(stats);library(tidyverse);library(magrittr)
+#message("\n*** Successfully loaded .Rprofile ***\n")
+
+
+url='https://raw.githubusercontent.com/OHDSI/DataQualityDashboard/master/inst/csv/OMOP_CDMv5.3.1_Concept_Level.csv'
+dqd<-read_csv(url)
+str(dqd)
+names(dqd)
+dqd %>% dplyr::filter(cdmTableName=='MEASUREMENT' & cmdFieldName=='MEASUREMENT_CONCEPT_ID' ) 
+dqd %>% dplyr::filter(cdmFieldName=='MEASUREMENT_CONCEPT_ID' ) %>% nrow()
+dqd %>% count(cdmTableName,cdmFieldName)
+
+
+#compare data driven and expert drive sets
+d$STRATUM_1 %<>% as.integer()
+dqd$unitConceptId %<>% as.integer()
+expert <-dqd %>% dplyr::filter(cdmFieldName=='MEASUREMENT_CONCEPT_ID' )
+names(expert)
+ddriven<-d %>% rename(conceptId=STRATUM_1,unitConceptId=STRATUM_2)  %>% select(conceptId,unitConceptId) %>% unique()
+
+names(d2)
+ddriven<-d %>% rename(conceptId=STRATUM_1,unitConceptId=STRATUM_2) 
+ddriven<-d2 %>% rename(conceptId=stratum_1,unitConceptId=stratum_2) 
+#ddriven %<>% filter(conceptId!=0)
+#ddriven %<>% filter(unitConceptId!=0)
+
+over=expert %>% inner_join(ddriven) #58 overlapping
+View(over)
+expert %>% anti_join(ddriven) #827 are in expert but not in data
+
+not1<-ddriven %>% anti_join(expert) #14 are in data and not in expert
+
+
+#compare the trehsholds
+names(over)
+over %>% select(conceptName,unitConceptName,plausibleValueLow,min_value)
+over %>% select(conceptName,unitConceptName,plausibleValueHigh,max_value) 
+#%>% knitr::kable()
+
+
+#expert thresholds don't follow unit conversion logic (max and min is same even if units indicate order of magniture difference)
+#MEASUREMENT	MEASUREMENT_CONCEPT_ID	3013721	Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma	8713	gram per deciliter	5	5	2000	5	NA	NA	NA	NA	NA	NA	NA	NA
+#MEASUREMENT	MEASUREMENT_CONCEPT_ID	3013721	Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma	8840	milligram per deciliter	5	5	2000
+
+#5g/dL into  mg/dL  (is 5000 mg/dL)
+#in data is in fact unit/L
