@@ -4,10 +4,14 @@
 \alias{executeDQ}
 \title{Execute all components of the DataQuality study (resultsDatabaseSchema is where Achilles results are)}
 \usage{
-executeDQ(connectionDetails, cdmDatabaseSchema,
+executeDQ(
+  connectionDetails,
+  cdmDatabaseSchema,
   resultsDatabaseSchema = cdmDatabaseSchema,
-  oracleTempSchema = resultsDatabaseSchema, cdmVersion = 5,
-  workFolder = "output")
+  oracleTempSchema = resultsDatabaseSchema,
+  cdmVersion = 5,
+  workFolder = "output"
+)
 }
 \arguments{
 \item{connectionDetails}{connection}

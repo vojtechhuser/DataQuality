@@ -5,8 +5,13 @@
 \title{Level one data about dataset MIAD stands for minimum information about a dataset
 percentage measures are used that hide exact patient counts}
 \usage{
-createMIAD(connectionDetails, cdmDatabaseSchema,
-  workDatabaseSchema = cdmDatabaseSchema, outputFolder, level = 3)
+createMIAD(
+  connectionDetails,
+  cdmDatabaseSchema,
+  workDatabaseSchema = cdmDatabaseSchema,
+  outputFolder,
+  level = 3
+)
 }
 \arguments{
 \item{connectionDetails}{connection}

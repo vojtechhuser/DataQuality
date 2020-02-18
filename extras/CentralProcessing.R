@@ -46,14 +46,17 @@ load('o:/athena/concept.rda')
 
 #reading a single site data (for now) 
 f<-'d:/OneDrive - National Institutes of Health/temp/dqd/export'
+f<-'d:/OneDrive - National Institutes of Health/ohdsi/thresholds'
 
 sfiles<-c(file.path(f,'1ThresholdsA.csv'))
-sfiles<-c(file.path(f,'1ThresholdsA.csv'),file.path(f,'ThresholdsA.csv'))
+sfiles<-c(file.path(f,'test-ThresholdsA.csv'))
+sfiles<-c(file.path(f,'1ThresholdsA.csv'),file.path(f,'ThresholdsA.csv'),file.path(f,'test-ThresholdsA.csv'))
 ll<-map(sfiles,read_csv)
 ll
 
 #ll<-map(p$pid,doProperty())
-ll2<-map2(ll,sfiles,~mutate(.x,site=.y))
+#strip name from full path trick
+ll2<-map2(ll,basename(sfiles),~mutate(.x,site=.y))
 d<-bind_rows(ll2)
 
 #add terminology concepts
@@ -66,12 +69,19 @@ d2<-d %>% filter(stratum_1 != 0) %>% filter(stratum_2 != 0) %>% left_join(sconce
 names(d2)
 
 #remove columns that are not needed
-d3<-d2 %>% select(-stratum_3,-stratum_4,-stratum_5,-p25_value,-p75_value) %>% 
-  filter(count_value >=100 ) %>% arrange(stratum_1,desc(count_value) )
+# d3<-d2 %>% select(-stratum_3,-stratum_4,-stratum_5,-p25_value,-p75_value) %>% 
+#   filter(count_value >=100 ) %>% arrange(stratum_1,desc(count_value) )
+
+d3<-d2 %>% select(-stratum_3,-stratum_4,-stratum_5) %>% 
+   arrange(stratum_1,desc(count_value) )
+
 
 d3 %>% count(site)
-ba<-d3 %>% count(stratum_1,stratum_2)
+names(d3)
+ba<-d3 %>% group_by(stratum_1,stratum_2,concept_name.x,concept_name.y) %>% summarize(tcnt=sum(count_value),n=n())
 ba %>% filter(n>=2)
+
+
 
 #24 test-unit pairs  have 2 results
 
@@ -149,3 +159,17 @@ over %>% select(conceptName,unitConceptName,plausibleValueHigh,max_value)
 
 #5g/dL into  mg/dL  (is 5000 mg/dL)
 #in data is in fact unit/L
+
+
+
+#unitmorph
+#Protein [Mass/volume] in Serum or Plasma	7096851	4	gram per deciliter|unit|milligram per deciliter|gram per liter
+#	gram per deciliter|   |milligram per deciliter |   gram per liter
+names(d3)
+bb<-d3 %>% filter(site=='ThresholdsA.csv') %>% group_by(stratum_1,concept_name.x) %>% 
+  summarize(tcnt=sum(count_value)
+            ,n=n(),units=paste(concept_name.y,collapse = '|')
+            ,cnts=paste(count_value ,collapse = '|')
+            ,unitcids=paste(stratum_2,collapse = '|')
+  )
+bb %>% write_csv('local/morphA.csv')

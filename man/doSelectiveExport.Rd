@@ -4,9 +4,14 @@
 \alias{doSelectiveExport}
 \title{selected Achilles Measures}
 \usage{
-doSelectiveExport(connectionDetails, cdmDatabaseSchema,
+doSelectiveExport(
+  connectionDetails,
+  cdmDatabaseSchema,
   resultsDatabaseSchema = cdmDatabaseSchema,
-  oracleTempSchema = resultsDatabaseSchema, cdmVersion = 5, workFolder)
+  oracleTempSchema = resultsDatabaseSchema,
+  cdmVersion = 5,
+  workFolder
+)
 }
 \arguments{
 \item{connectionDetails}{connection}

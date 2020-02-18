@@ -3,7 +3,6 @@
 \docType{package}
 \name{DataQuality}
 \alias{DataQuality}
-\alias{DataQuality-package}
 \title{DataQuality.}
 \description{
 Package analyzes data quality of a dataset in OMOP CDM format. It uses pre-computations

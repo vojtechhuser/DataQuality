@@ -4,9 +4,14 @@
 \alias{doTree}
 \title{experimental funtion with graphic output}
 \usage{
-doTree(connectionDetails, cdmDatabaseSchema,
+doTree(
+  connectionDetails,
+  cdmDatabaseSchema,
   resultsDatabaseSchema = cdmDatabaseSchema,
-  oracleTempSchema = resultsDatabaseSchema, cdmVersion = 5, workFolder)
+  oracleTempSchema = resultsDatabaseSchema,
+  cdmVersion = 5,
+  workFolder
+)
 }
 \arguments{
 \item{connectionDetails}{connection}

@@ -509,6 +509,7 @@ GROUP BY o.stratum1_id, o.stratum2_id, o.total, o.min_value, o.max_value, o.avg_
 #' Execute all components of the DataQuality study (resultsDatabaseSchema is where Achilles results are)
 #' @param connectionDetails connection
 #' @param connectionDetails2 more study parameters
+#' @param runViaAchilles flag that runs legacy analysis using Achilles measure (analysis)
 
 #' @export
 dashboardLabThresholds <- function(connectionDetails,

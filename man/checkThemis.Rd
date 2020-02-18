@@ -5,8 +5,12 @@
 \title{check ThemisMeasurements Unit data
 obtains analysisId 1807 and compares to reference data. Output is in export folder and as data.frame}
 \usage{
-checkThemis(connectionDetails, cdmDatabaseSchema,
-  resultsDatabaseSchema = cdmDatabaseSchema, outputFolder)
+checkThemis(
+  connectionDetails,
+  cdmDatabaseSchema,
+  resultsDatabaseSchema = cdmDatabaseSchema,
+  outputFolder
+)
 }
 \arguments{
 \item{connectionDetails}{connection}

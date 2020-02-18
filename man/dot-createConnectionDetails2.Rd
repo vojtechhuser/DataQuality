@@ -4,9 +4,14 @@
 \alias{.createConnectionDetails2}
 \title{helper object with more connection details}
 \usage{
-.createConnectionDetails2(cdmDatabaseSchema,
-  resultsDatabaseSchema = NULL, oracleTempSchema = NULL,
-  cdmVersion = "5", cohortTable = "cohort", workFolder = "c:/temp")
+.createConnectionDetails2(
+  cdmDatabaseSchema,
+  resultsDatabaseSchema = NULL,
+  oracleTempSchema = NULL,
+  cdmVersion = "5",
+  cohortTable = "cohort",
+  workFolder = "c:/temp"
+)
 }
 \arguments{
 \item{cdmDatabaseSchema}{schema}
