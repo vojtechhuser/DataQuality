@@ -510,10 +510,11 @@ GROUP BY o.stratum1_id, o.stratum2_id, o.total, o.min_value, o.max_value, o.avg_
 #' @param connectionDetails connection
 #' @param connectionDetails2 more study parameters
 #' @param runViaAchilles flag that runs legacy analysis using Achilles measure (analysis)
+#' @param exportThreshold removes rows that have fewer than specified events (default is 11)
 
 #' @export
 dashboardLabThresholds <- function(connectionDetails,
-                      connectionDetails2,runViaAchilles=FALSE
+                      connectionDetails2,runViaAchilles=FALSE,exportThreshold=11
                       ){
   
   
@@ -569,6 +570,8 @@ dashboardLabThresholds <- function(connectionDetails,
   
   #custom percentiles
   b<-customMeasure(connectionDetails = connectionDetails,connectionDetails2 = connectionDetails2)
+  names(b) <- tolower(names(b))
+  b<-dplyr::filter(b, count_value>=exportThreshold)
   
   #done separately for now, may be included later
   writeLines(paste("--writing some output to export folder:",exportFolder))

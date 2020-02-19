@@ -29,6 +29,8 @@ connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = "postgres
 								user = "",
 								password = "")
 
+
+
 cdmDatabaseSchema <-'main'
 resultsDatabaseSchema <-'main' #at most sites this likely will not be the same as cdmDatabaseSchema
 workFolder <- 'c:/temp/dqd'   #this folder must exist (use forward slashes)
