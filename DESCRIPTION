@@ -1,6 +1,6 @@
 Package: DataQuality
 Title: Data Quality study in OHDSI and data quality evaluation
-Version: 4.0
+Version: 4.1
 Authors@R: "Vojtech Huser <vojtech.huser@nih.gov> [aut, cre]"
 Description: This package has several functions. It supports Data Quality Dashboard and OHDSI Data Quality study. 
     It also allows Data Quality evaluation (even after closure of the formal study). 
