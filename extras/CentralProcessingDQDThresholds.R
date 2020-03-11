@@ -26,6 +26,7 @@ sfiles<-c(file.path(f,'01ThresholdsB.csv')
           ,file.path(f,'03ThresholdsB.csv')
           ,file.path(f,'04ThresholdsB.csv')
           ,file.path(f,'05ThresholdsB.csv')
+          ,file.path(f,'06ThresholdsB.csv')
 )
 ll<-map(sfiles,read_csv)
 ll
@@ -50,7 +51,8 @@ names(d)
 #   left_join(sconcept,by=c('stratum_2'='concept_id')) 
 
 
-d2<-d %>% filter(count_value >=11 ) %>% filter(stratum1_id != 0) %>% filter(stratum2_id != 0) %>% left_join(sconcept,by=c('stratum1_id'='concept_id')) %>%
+d2<-d %>% filter(count_value >=11 ) %>% filter(stratum1_id != 0) %>% filter(stratum2_id != 0) %>% 
+  left_join(sconcept,by=c('stratum1_id'='concept_id')) %>%
   left_join(sconcept,by=c('stratum2_id'='concept_id')) %>% filter(!is.na(concept_name.x))
 #test in 2B range are excluded by last filter
 
@@ -61,16 +63,9 @@ soverview<-d2 %>% count(site)
 soverview
 #soverview %>% write_csv('extras/DqdResults/S1_overview.csv')
 
-#remove columns that are not needed
-# d3<-d2 %>% select(-stratum_3,-stratum_4,-stratum_5,-p25_value,-p75_value) %>% 
-#   filter(count_value >=100 ) %>% arrange(stratum_1,desc(count_value) )
-
-d3<-d2 %>% select(-stratum_3,-stratum_4,-stratum_5) %>% 
-   arrange(stratum_1,desc(count_value) )
 
 
-#d3 %>% count(site)
-#names(d3)
+
 ba<-d2 %>% group_by(stratum1_id,stratum2_id,concept_name.x,concept_name.y) %>% summarize(tcnt=sum(count_value),n=n())
 ba %>% filter(n>=2) %>% nrow()
 nrow(ba)
@@ -82,23 +77,11 @@ nrow(ba)
 #tests with more units
 ba %>% ungroup() %>%  count(stratum1_id,concept_name.x) %>% filter(n>=2)
 #TODO improve later
-#868 tests have 2+ units
-
-#only where multiple sites
-#d10<-d3 %>% inner_join(ba %>% filter(n>=2))
 
 
 
 
-
-#even more removal of data
-#d4<-d3 %>% select(-count_value,-median_value,-stdev_value,-avg_value,-site)
-
-#d4 %>% write_csv('extras/DqdResults/thresholds-list-A.csv')
-#nrow(d4)
-
-
-#end of analysis of
+#end of section
 
 
 #---------------comparison with expert driven
@@ -125,33 +108,132 @@ nrow(expert)
 #856 threshold checks are in expert driven KB
 names(expert)
 elabs<-expert %>% group_by(conceptId,conceptName) %>% summarise(unitcnt=n(),units=paste(unitConceptName,collapse = "|"))
-
+nrow(elabs)
 # for 330 distinct lab tests
-elabs %>% write_csv('extras/DqdResults/DQD-expert-driven-A-lab-list.csv')  
+#elabs %>% write_csv('extras/DqdResults/DQD-expert-driven-A-lab-list.csv')  
 
 names(expert)
-#ddriven<-d %>% rename(conceptId=STRATUM_1,unitConceptId=STRATUM_2)  %>% select(conceptId,unitConceptId) %>% unique()
 
 names(d2)
-#ddriven<-d %>% rename(conceptId=STRATUM_1,unitConceptId=STRATUM_2) 
+#renaming d2 (data driven) data to prepare for comparison of expert and data driven
 ddriven<-d2 %>% rename(conceptId=stratum1_id,unitConceptId=stratum2_id) 
+
+#ddriven2 is on test-unit pair level (only one row per lab-unit pair)
 ddriven2<-ba %>% rename(conceptId=stratum1_id,unitConceptId=stratum2_id) 
+
+
 
 #ddriven %<>% filter(conceptId!=0)
 #ddriven %<>% filter(unitConceptId!=0)
 
 over=expert %>% inner_join(ddriven2) 
 nrow(over)
-#331 tests are overlapping between ddriven (data driven) and expert (expert driven)
+#451 pairs are overlapping between ddriven (data driven) and expert (expert driven)
 #View(over)
 
 not2<-expert %>% anti_join(ddriven2) 
 nrow(not2)
-#525 are in expert list but not in data from any site
+#405 are in expert list but not in data from any site
 
-not1<-ddriven2 %>% anti_join(expert) 
+#freq rank for lab test
+
+freq<-ddriven %>% group_by(conceptId) %>% summarize(tcnt=sum(count_value)) %>% 
+   mutate(lab_test_freq_rank = dense_rank(desc(tcnt)))
+
+
+
+
+
+#---more analysis in March 2020
+#mean  and median should be close, one super high value shifts the mean (could be used in logic)
+#3020891 body temp
+
+#list units for each lab test
+names(ddriven)
+
+# bb<-ddriven %>% group_by(conceptId,concept_name.x) %>% dplyr::summarize(n=n()                                                            
+#                                                                         ,unitIds=paste(unitConceptId,collapse = '|')
+#                                                             ,units=paste(concept_name.y,collapse = '|'))
+#by lab test view
+bb2<-ddriven2 %>% ungroup %>% arrange(desc(n),desc(tcnt)) %>% group_by(conceptId,concept_name.x) %>% dplyr::summarize(                                                            
+                                                                        unitIds=paste(unitConceptId,collapse = '|')
+                                                                        ,units=paste(concept_name.y,collapse = '|')
+                                                                        ,siteCnts=paste(n,collapse='|')
+                                                                        ,distinct_unit_cnt=n())
+
+names(ba)
+viewSites<-ba %>% ungroup() %>%  count(n)
+viewSites
+# # A tibble: 6 x 2
+# n    nn
+# <int> <int>
+#   1     1  4593
+# 2     2   641
+# 3     3   434
+# 4     4   247
+# 5     5    27
+# 6     6     1
+
+
+#bset<-ba %>% filter(n==3)
+#bc<-ddriven %>% inner_join(bset)
+#3009542 hematocrit
+options(scipen=999) #disable scientific notation
+prekb<-ddriven %>% group_by(conceptId,concept_name.x,unitConceptId,concept_name.y) %>% summarize(
+  n=n()
+  ,sum_count_value=sum(count_value)
+  #,kb_min_mean=mean(min_value)
+  #,kb_max_mean=mean(max_value)
+  ,kb_min_median=median(min_value)
+  ,kb_max_median=median(max_value)
+  ,kb_p01_value_median=median(p01_value)
+  ,kb_p99_value_median=median(p99_value)
+  ,kb_p50_median=median(median_value)
+  ,kb_stdev_median=median(stdev_value)
+)  %>% ungroup() %>% 
+    mutate(freq_rank = dense_rank(desc(sum_count_value)))
+
+kb<- prekb%>% filter(n>=2) %>% filter(sum_count_value>=1)
+
+#analysis on lab test only level
+#expert has 330 distinct tests
+
+
+kb %>% write_csv('local/S01-benchmark-data2.csv')
+kbExport<-kb %>% filter(sum_count_value>=100) %>% select(-sum_count_value) %>% arrange(freq_rank)
+#kbExport %>% write_csv('extras/DqdResults/S01-benchmark-kb-subset.csv')
+
+
+names(kb)
+names(ddriven)
+                                        
+
+#analysis on lab test only level
+#expert has 330 distinct tests
+#bb2 is essentially that
+  #labs<-prekb  %>% group_by(conceptId,concept_name.x) %>% summarise(n=n(),sum_rank=sum(freq_rank)) 
+#add freq rank to it
+
+bb3<-bb2 %>% left_join(freq %>% select(-tcnt)) %>% arrange(lab_test_freq_rank)
+names(bb3)
+bb3 %>%  nrow()
+bb3 %>% write_csv('extras/DqdResults/S02-KB-lab-test-view.csv')
+
+#test that are in data but  are not in expert driven (on lab test level)
+not1<-bb3 %>% anti_join(expert) 
 nrow(not1)
-#4134 are in data but are absent in expert driven KB
+#3993 are in data (full KB) but are absent in expert driven KB
+
+
+bb3 %>% nrow()
+#4282 distinct lab test (including data from a single site)
+
+#terms
+#benchmark KB = has content only if 2+ sites contribute thresholds
+#full KB = provides thresholds even if they come from a single site (is bigger than benchmark)
+
+
+
 
 
 #compare the trehsholds
@@ -180,4 +262,19 @@ bb<-d3 %>% filter(site=='ThresholdsA.csv') %>% group_by(stratum_1,concept_name.x
             ,cnts=paste(count_value ,collapse = '|')
             ,unitcids=paste(stratum_2,collapse = '|')
   )
+
 bb %>% write_csv('local/morphA.csv')
+
+#more unit work
+u<-read_csv('local/conv-dev.csv')
+names(u)
+u %<>% filter(is.na(measurement_concept_id))
+u2<-tibble(unit_concept_id=u$target_unit_concept_id
+       ,target_unit_concept_id=u$unit_concept_id
+       ,factor=1/u$factor)
+ub<-bind_rows(u,u2)  %>% 
+  left_join(sconcept,by=c('unit_concept_id'='concept_id')) %>% 
+  left_join(sconcept,by=c('target_unit_concept_id'='concept_id'))
+
+
+             
