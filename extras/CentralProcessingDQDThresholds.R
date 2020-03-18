@@ -198,10 +198,16 @@ kb<- prekb%>% filter(n>=2) %>% filter(sum_count_value>=1)
 #analysis on lab test only level
 #expert has 330 distinct tests
 
-
+#kb <- read_csv('local/S01-benchmark-data2.csv')
 kb %>% write_csv('local/S01-benchmark-data2.csv')
+
 kbExport<-kb %>% filter(sum_count_value>=100) %>% select(-sum_count_value) %>% arrange(freq_rank)
-#kbExport %>% write_csv('extras/DqdResults/S01-benchmark-kb-subset.csv')
+kbExport %>% write_csv('extras/DqdResults/S01-benchmark-kb-subset.csv')
+kbExport %>% write_csv(            'local/S01-benchmark-kb-subset.csv')
+
+#conservative
+kbExport<-kb %>% filter(sum_count_value>=100) %>% select(-sum_count_value) %>% arrange(freq_rank)
+
 
 
 names(kb)
