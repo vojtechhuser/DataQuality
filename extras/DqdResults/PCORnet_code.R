@@ -3,6 +3,7 @@
 # lab_result_cm has lab data
 
 #url of S01 file
+url = 'https://raw.githubusercontent.com/vojtechhuser/DataQuality/master/extras/DqdResults/S01-benchmark-kb-subset.csv'
 kb <-read_csv(url)
 l_ext<-lab_result_cm %>% left_join(kb,by=c('lab_loinc'='concept_code') 
                                    
