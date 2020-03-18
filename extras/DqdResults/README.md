@@ -9,6 +9,7 @@ This is subset of the benchmark knowledge base (KB) (only frequent lab test were
 If given OMOP dataset has significantly different values for p01 and p99 (e.g., not within standard deviation of benchmark values), it may indicate a potential data quality (DQ) issue.
 
 Additional other methodologies are possible to do DQA with the KB.
+Column concept_code contains the LOINC code (for use accross CDMs).
 
 # S02
 
