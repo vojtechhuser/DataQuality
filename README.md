@@ -5,7 +5,7 @@ This is an R package that has sume utilities and also supports  informatics stud
 
 # Support development of Data Quality Dashboard (DQD)
 
-Package has functions that support addition of more rules and knowledge base items to the Data Quality Dashboard. For example, we want to compute 3rd and 97th percentile (or other parameters) for some lab results to use those as thresholds.
+Package has functions that support addition of more rules and knowledge base items to the Data Quality Dashboard. For example, we want to compute 1st,3rd,  97th and 99th percentile (or other parameters) for some lab results to use those as thresholds.
 
 A site can participate on developing knowledbe base for DQD. Or it can take part on format research study (to be published). Se [extras/protocol](extras/protocol) folder for protocol. 
 
