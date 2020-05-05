@@ -41,8 +41,11 @@ llmoded<-map(ll,~{names(.x)<-tolower(names(.x));return(.x)})
 ll2<-map2(llmoded,basename(sfiles),~mutate(.x,site=.y))
 d<-bind_rows(ll2)
 
+
+#---end of reading input files
+
 #add terminology concepts
-sconcept<-concept %>% select(concept_id,concept_name)
+sconcept<-concept %>% select(concept_id,concept_name,concept_code)
 names(d) <- tolower(names(d))
 names(d)
 #remove no units rows and expand the CIDs
@@ -52,8 +55,8 @@ names(d)
 
 
 d2<-d %>% filter(count_value >=11 ) %>% filter(stratum1_id != 0) %>% filter(stratum2_id != 0) %>% 
-  left_join(sconcept,by=c('stratum1_id'='concept_id')) %>%
-  left_join(sconcept,by=c('stratum2_id'='concept_id')) %>% filter(!is.na(concept_name.x))
+  left_join(concept %>% select(concept_id,concept_name,concept_code),by=c('stratum1_id'='concept_id')) %>%
+  left_join(concept %>% select(concept_id,concept_name),by=c('stratum2_id'='concept_id')) %>% filter(!is.na(concept_name.x))
 #test in 2B range are excluded by last filter
 
 names(d2)
@@ -66,7 +69,7 @@ soverview
 
 
 
-ba<-d2 %>% group_by(stratum1_id,stratum2_id,concept_name.x,concept_name.y) %>% summarize(tcnt=sum(count_value),n=n())
+ba<-d2 %>% group_by(stratum1_id,stratum2_id,concept_name.x,concept_name.y,concept_code) %>% summarize(tcnt=sum(count_value),n=n())
 ba %>% filter(n>=2) %>% nrow()
 nrow(ba)
 #4465 distinct test-unit pairs
@@ -179,7 +182,8 @@ viewSites
 #bc<-ddriven %>% inner_join(bset)
 #3009542 hematocrit
 options(scipen=999) #disable scientific notation
-prekb<-ddriven %>% group_by(conceptId,concept_name.x,unitConceptId,concept_name.y) %>% summarize(
+names(ddriven)
+prekb<-ddriven %>% group_by(conceptId,concept_name.x,unitConceptId,concept_name.y,concept_code) %>% summarize(
   n=n()
   ,sum_count_value=sum(count_value)
   #,kb_min_mean=mean(min_value)

@@ -47,8 +47,11 @@ connectionDetails2<-DataQuality:::.createConnectionDetails2(cdmDatabaseSchema = 
 
 DataQuality::dashboardLabThresholds(connectionDetails = connectionDetails,connectionDetails2 = connectionDetails2)
 
+#second component added in May 2020
+DataQuality::dashboardLabValueAsConceptID(connectionDetails = connectionDetails,connectionDetails2 = connectionDetails2)
+
 #results are in workfolder, subfolder export, inspect it and 
-#email the CSV file called Thresholds to the study PI
+#email the CSV files called Thresholds and LabCodedValueResults to the study PI
 
 #for simplicity, the package is not using submission of the results via OHDSI AWS infrustructure 
 #(if requested by site, the code can be provided, though)

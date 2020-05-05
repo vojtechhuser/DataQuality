@@ -613,3 +613,127 @@ dashboardLabThresholds <- function(connectionDetails,
   class(result) <- "connectionDetails2"
   return(result)
 }
+
+
+
+#' Execute all components of the DataQuality study (resultsDatabaseSchema is where Achilles results are)
+#' @param connectionDetails connection
+#' @param connectionDetails2 more study parameters
+#' @param runViaAchilles flag that runs legacy analysis using Achilles measure (analysis)
+#' @param exportThreshold removes rows that have fewer than specified events (default is 11)
+
+#' @export
+dashboardLabValueAsConceptID <- function(connectionDetails,
+                                   connectionDetails2,runViaAchilles=FALSE,exportThreshold=11
+){
+  
+  
+  #create export folder
+  #create export subfolder in workFolder
+  exportFolder <- file.path(connectionDetails2$workFolder, "export")
+  if (!file.exists(exportFolder))
+    dir.create(exportFolder)
+  
+  
+  #add readme file
+  #file.copy(system.file("dqd/readme.txt",package="DataQuality"), exportFolder)
+  #multiple steps here exporting to export folder
+  
+  #disabled for now
+  #if (runViaAchilles) {
+  if (FALSE) {
+    
+    writeLines("----Running some Achilles Measures")
+    Achilles::achilles(connectionDetails = connectionDetails
+                       ,cdmDatabaseSchema = connectionDetails2$cdmDatabaseSchema
+                       ,resultsDatabaseSchema = connectionDetails2$resultsDatabaseSchema
+                       ,cdmVersion = connectionDetails2$cdmVersion
+                       ,analysisIds = c(1807,1815) #,1816,1817)
+                       ,runHeel = FALSE
+                       ,createIndices = FALSE
+                       ,verboseMode = TRUE)
+    units<-Achilles::fetchAchillesAnalysisResults(connectionDetails = connectionDetails,resultsDatabaseSchema = connectionDetails2$resultsDatabaseSchema
+                                                  ,analysisId = 1807)
+    
+    units2<-units$analysisResults
+    names(units2) <- tolower(names(units2))
+    #names(units2)
+    #take those that have both defined
+    #str(units2)
+    units2$measurement_concept_id <-as.integer(units2$measurement_concept_id)
+    units2$unit_concept_id <-as.integer(units2$unit_concept_id)
+    #units, must have few numbers and non zero units
+    
+    
+    #more numbers
+    a<-.fetchAchillesAnalysisDistResults(connectionDetails = connectionDetails,resultsDatabaseSchema = connectionDetails2$resultsDatabaseSchema
+                                         #                  ,AnalysesAsSqlInCode = "1815,1816,1817")
+                                         ,AnalysesAsSqlInCode = "1815")
+    
+    
+    
+    
+    selected<-units2 %>% dplyr::filter( count_value>100 & unit_concept_id !=0 )
+    writeLines(paste("-----count of suitable measurements for analysis:",nrow(selected)))
+    
+    # write.csv(selected,file = file.path(exportFolder,'SuitableMeasurementsAndUnits.csv'),row.names = F)
+    # write.csv(a,file = file.path(exportFolder,'ThresholdsA.csv'),row.names = F)
+  }
+  
+  #execution via custom SQL (not to have dependency on Achilles)
+  #-- 1822	Number of measurement records, by measurement_concept_id and value_as_concept_id
+  sql='
+select
+	1822 AS analysis_id,
+	measurement_concept_id,
+	value_as_concept_id,
+	count_big(*) AS count_value
+from @cdmDatabaseSchema.measurement
+group by measurement_concept_id, value_as_concept_id;
+  '
+  b<-customMeasureSql(connectionDetails = connectionDetails,connectionDetails2 = connectionDetails2,sql=sql)
+  names(b) <- tolower(names(b))
+  b<-dplyr::filter(b, count_value>=exportThreshold)
+  
+  #convert values to percentages possibly here
+  options(scipen=999) #disable scientific notation
+  b2<-b %>% dplyr::group_by(measurement_concept_id) %>%  dplyr::mutate(perc= count_value / sum(count_value)) %>% 
+    dplyr::arrange(measurement_concept_id,desc(perc) ) %>% select(-count_value)
+  
+  
+  
+  writeLines(paste("-----count of measurements with coded value:",nrow(b)))
+  
+  writeLines(paste("--writing output file LabCodedValuesResults to export folder:",exportFolder))
+  
+  
+  write.csv(b2,file = file.path(exportFolder,'LabCodedValueResults.csv'),row.names = F)
+  
+  #final cleanup
+  writeLines("--Done with dashboardLabValueAsConceptID")
+  
+}
+
+
+#' do a custom measure
+#' @param connectionDetails connection
+#' @param connectionDetails2 more study parameters
+#' @param sql sql code to run
+
+#' @export
+customMeasureSql <- function(connectionDetails,
+                          connectionDetails2,
+                          sql){
+   
+	
+	 sql <- SqlRender::render(sql,cdmDatabaseSchema=connectionDetails2$cdmDatabaseSchema)
+	 #cat(sql)
+	 sql <- SqlRender::translate(sql,targetDialect = connectionDetails$dbms)
+	 
+	 conn <- DatabaseConnector::connect(connectionDetails)
+	 data <- DatabaseConnector::querySql(conn, sql)
+	 #View(data)
+	 
+	 DatabaseConnector::dbDisconnect(conn)
+	 return(data)
+}  
